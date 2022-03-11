@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,9 +23,12 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'username',
+        'role'
     ];
 
     /**
@@ -56,6 +58,42 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        'avatar',
+        'fullname'
     ];
+
+    public function getFullnameAttribute()
+    {
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class);
+    }
+
+    public function ratio()
+    {
+        return $this->hasOne(UserRatio::class);
+    }
+
+    public function host()
+    {
+        return $this->hasMany(Meeting::class, ‘host_id’, ‘id’);
+    }
+
+    public function patron()
+    {
+        return $this->hasMany(Meeting::class, ‘patron_id’, ‘id’);
+    }
 }
