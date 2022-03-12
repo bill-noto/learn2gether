@@ -17,8 +17,8 @@ class UserRatioFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 15),
-            'ratio' => $this->faker->numberBetween(1, 5)
+            'user_id' => $this->faker->unique()->numberBetween(3, 18),
+            'ratio' => $this->faker->randomFloat(1, 1, 5)
         ];
     }
 }
