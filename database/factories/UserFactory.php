@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'username' => $this->faker->userName(),
             'role' => $this->faker->numberBetween(1, 2),
-            'avatar' => $this->faker->imageUrl(100, 100, 'cats'),
+            'profile_photo_path' => $this->faker->imageUrl(400, 400, 'cats'),
             'remember_token' => Str::random(10),
         ];
     }

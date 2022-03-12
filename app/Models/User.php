@@ -58,11 +58,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'avatar',
-        'fullname'
+        'name',
     ];
 
-    public function getFullnameAttribute()
+    public function getNameAttribute()
     {
         return $this->first_name . " " . $this->last_name;
     }
