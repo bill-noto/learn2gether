@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Language extends Resource
@@ -20,7 +21,7 @@ class Language extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'language';
 
     /**
      * The columns that should be searched.
@@ -28,7 +29,7 @@ class Language extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'language'
     ];
 
     /**
@@ -41,6 +42,9 @@ class Language extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            Text::make('Language')
+                ->sortable()
         ];
     }
 

@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class UserRatio extends Resource
@@ -20,7 +22,7 @@ class UserRatio extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'user->name';
 
     /**
      * The columns that should be searched.
@@ -41,6 +43,10 @@ class UserRatio extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            Text::make('Name', 'user->name'),
+
+            Number::make('ratio')->min(1)->max(5)->step(0.1)
         ];
     }
 

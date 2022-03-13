@@ -13,6 +13,10 @@ class Language extends Model
 
     public $timestamps = false;
 
+    protected $with = [
+        'users'
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class);

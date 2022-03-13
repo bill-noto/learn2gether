@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -52,7 +54,11 @@ class Comment extends Resource
                 ->exceptOnForms(),
 
             Textarea::make('Comment')
-                ->alwaysShow()
+                ->alwaysShow(),
+
+            DateTime::make('Posted on', 'created_at')
+                ->format('HH:mm on DD/MM/YYYY')
+                ->exceptOnForms()
         ];
     }
 

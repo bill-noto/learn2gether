@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class LanguageUser extends Resource
@@ -41,6 +42,12 @@ class LanguageUser extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+
+            Text::make('User', 'users')
+                ->sortable(),
+
+            Text::make('Language', 'languages')
+                ->sortable(),
         ];
     }
 
