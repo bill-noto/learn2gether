@@ -16,5 +16,21 @@ class UserRatioSeeder extends Seeder
     public function run()
     {
         UserRatio::factory(15)->create();
+
+        UserRatio::create([
+            'user_id' => 19
+        ]);
+
+        UserRatio::create([
+            'user_id' => 20
+        ]);
+
+        UserRatio::create([
+            'user_id' => 21
+        ]);
+
+        UserRatio::create([
+            'user_id' => 22
+        ]);
     }
 }

@@ -18,7 +18,7 @@ class LanguageUserFactory extends Factory
     {
         return [
             'language_id' => $this->faker->numberBetween(1, 11),
-            'user_id' => $this->faker->numberBetween(1, 20)
+            'user_id' => $this->faker->numberBetween(3, 22)
         ];
     }
 }
