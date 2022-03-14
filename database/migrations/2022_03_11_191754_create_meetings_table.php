@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('host_id')->constrained('users');
             $table->foreignId('patron_id')->constrained('users');
-            $table->string('date_of_meeting');
-            $table->string('time_of_meeting');
+            $table->timestamp('date_time_of_meeting');
         });
     }
 

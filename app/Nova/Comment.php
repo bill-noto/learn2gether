@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Models\User;
+use \App\Models\Post;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -43,15 +45,22 @@ class Comment extends Resource
      */
     public function fields(Request $request)
     {
+        $users = User::get()->pluck('name', 'id');
+        $posts = Post::get()->pluck('title', 'id');
         return [
             ID::make(__('ID'), 'id')
                 ->sortable(),
 
             Text::make('Author', 'user->name')
-                ->sortable(),
+                ->sortable()
+                ->exceptOnForms(),
+
+            Select::make('Author', 'user_id')->options($users)->onlyOnForms(),
 
             Text::make('Post', 'post->title')
                 ->exceptOnForms(),
+
+            Select::make('Post', 'post_id')->options($posts)->onlyOnForms(),
 
             Textarea::make('Comment')
                 ->alwaysShow(),

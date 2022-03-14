@@ -13,13 +13,17 @@ class Meeting extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'date_time_of_meeting' => 'date'
+    ];
+
     public function host()
     {
-        return $this->belongsTo(User::class, 'user_id', 'host_id');
+        return $this->belongsTo(User::class, 'host_id', 'id');
     }
 
     public function patron()
     {
-        return $this->belongsTo(User::class, 'user_id', 'patron_id');
+        return $this->belongsTo(User::class, 'patron_id', 'id');
     }
 }

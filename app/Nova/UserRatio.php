@@ -2,9 +2,11 @@
 
 namespace App\Nova;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -41,12 +43,16 @@ class UserRatio extends Resource
      */
     public function fields(Request $request)
     {
+        $users = User::get()->pluck('name', 'id');
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
-            Text::make('Name', 'user->name'),
+            Text::make('Name', 'user->name')
+                ->exceptOnForms(),
 
-            Number::make('ratio')->min(1)->max(5)->step(0.1)
+            Select::make('Author', 'user_id')->options($users)->onlyOnForms(),
+
+            Number::make('Ratio')->min(1)->max(5)->step(0.1)
         ];
     }
 

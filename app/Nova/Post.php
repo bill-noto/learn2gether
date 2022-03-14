@@ -42,18 +42,15 @@ class Post extends Resource
      */
     public function fields(Request $request)
     {
+        $users = User::get()->pluck('name', 'id');
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('Author', 'user->name')
                 ->sortable()
-                ->hideWhenUpdating(),
+                ->exceptOnForms(),
 
-            Select::make('Author')->options(function () {
-                foreach (User::all() as $author) {
-                    return $author->name;
-                }
-            })->onlyOnForms(),
+            Select::make('Author', 'user_id')->options($users)->onlyOnForms(),
 
             Text::make('Title'),
 

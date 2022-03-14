@@ -30,7 +30,7 @@ class Meeting extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'date_of_meeting', 'time_of_meeting'
     ];
 
     /**
@@ -41,36 +41,26 @@ class Meeting extends Resource
      */
     public function fields(Request $request)
     {
+        $hosts = \App\Models\User::where('role', 'host')->get()->pluck('name', 'id');
+        $patrons = \App\Models\User::where('role', 'patron')->get()->pluck('name', 'id');
         return [
             ID::make(__('ID'), 'id')->sortable(),
 
             Text::make('Host', 'host->name')
                 ->sortable()
-                ->hideWhenUpdating()
-                ->hideWhenCreating(),
+                ->exceptOnForms(),
 
-            Select::make('Host', 'host_id')->options(function () {
-                foreach (\App\Models\User::where('role', 'host')->get() as $host) {
-                    return $host->name;
-                }
-            })->onlyOnForms(),
+            Select::make('Host', 'host_id')->options($hosts)->onlyOnForms(),
 
             Text::make('Patron', 'patron->name')
                 ->sortable()
-                ->hideWhenUpdating()
-                ->hideWhenCreating(),
+                ->exceptOnForms(),
 
-            Select::make('Patron', 'patron_id')->options(function () {
-                foreach (\App\Models\User::where('role', 'patron')->get() as $patron) {
-                    return $patron->name;
-                }
-            })->onlyOnForms(),
+            Select::make('Patron', 'patron_id')->options($patrons)->onlyOnForms(),
 
-            DateTime::make('Date of Meeting', 'date_of_meeting')
-                ->format('DD/MM/YYYY'),
+            DateTime::make('Date & Time of Meeting', 'date_time_of_meeting')
+                ->format('DD/MM/YY HH:mm'),
 
-            DateTime::make('Time of Meeting', 'time_of_meeting')
-                ->format('HH:mm')
         ];
     }
 

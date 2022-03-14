@@ -17,7 +17,9 @@ class MeetingFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'host_id' => $this->faker->numberBetween(3, 18),
+            'patron_id' => $this->faker->numberBetween(3, 18),
+            'date_time_of_meeting' => $this->faker->dateTimeBetween('-10 days', '45 days', 'Europe/Paris')
         ];
     }
 }

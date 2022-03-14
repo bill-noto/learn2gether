@@ -3,10 +3,10 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 
 class User extends Resource
@@ -45,11 +45,23 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
+//            Accessor
             Image::make('Profile Photo', 'profile_photo_path')->squared(),
 
             Text::make('Name')
+                ->exceptOnForms(),
+
+            Text::make('First Name', 'first_name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:120')
+                ->onlyOnForms(),
+
+            Text::make('Last Name', 'last_name')
+                ->sortable()
+                ->rules('required', 'max:120')
+                ->onlyOnForms(),
+
+//            Text::make('Language', 'languages->language_id'),
 
             Text::make('Email')
                 ->sortable()
@@ -58,7 +70,17 @@ class User extends Resource
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
             Text::make('Username')
-                ->rules('required', 'max:254'),
+                ->rules('required', 'max:120'),
+
+            Text::make('Role')
+                ->sortable()
+                ->exceptOnForms(),
+
+            Select::make('Role')->options([
+                'patron' => 'Patron',
+                'host' => 'Host',
+                'admin' => 'Admin'
+            ])->onlyOnForms(),
 
             Password::make('Password')
                 ->onlyOnForms()

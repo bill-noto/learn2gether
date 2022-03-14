@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             LanguageSeeder::class,
+            MeetingSeeder::class,
             PostSeeder::class,
             CommentSeeder::class,
             LanguageUserSeeder::class,
