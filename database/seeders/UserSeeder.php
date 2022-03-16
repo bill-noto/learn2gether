@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'email' => 'admin1@admin.com',
             'password' => Hash::make('password123'),
             'username' => 'admin1',
-            'profile_photo_path' => 'https://www.kindpng.com/picc/m/421-4212275_transparent-default-avatar-png-avatar-img-png-download.png',
+            'profile_photo_path' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk5wU7AMQXCYGVsvB7ZX6FQImOSGPaBgSNmg&usqp=CAU',
             'role' => 'admin'
         ]);
 
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'email' => 'admin2@admin.com',
             'password' => Hash::make('password123'),
             'username' => 'admin2',
-            'profile_photo_path' => 'https://www.kindpng.com/picc/m/421-4212275_transparent-default-avatar-png-avatar-img-png-download.png',
+            'profile_photo_path' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk5wU7AMQXCYGVsvB7ZX6FQImOSGPaBgSNmg&usqp=CAU',
             'role' => 'admin'
         ]);
 

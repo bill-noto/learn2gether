@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Password;
@@ -45,8 +47,14 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-//            Accessor
-            Image::make('Profile Photo', 'profile_photo_path')->squared(),
+            Image::make('Profile Photo', 'profile_photo_path')
+                ->maxWidth(200)
+                ->preview(function () {
+                    return $this->user_avatar;
+                })
+                ->thumbnail(function () {
+                    return $this->user_avatar;
+                }),
 
             Text::make('Name')
                 ->exceptOnForms(),
@@ -61,7 +69,11 @@ class User extends Resource
                 ->rules('required', 'max:120')
                 ->onlyOnForms(),
 
-//            Text::make('Language', 'languages->language_id'),
+            BelongsToMany::make('Languages'),
+
+            Text::make('Languages', function (){
+                return implode(', ', $this->languages->pluck('language')->toArray());
+            })->exceptOnForms(),
 
             Text::make('Email')
                 ->sortable()

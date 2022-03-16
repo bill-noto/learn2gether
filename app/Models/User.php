@@ -58,8 +58,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'name',
+        'name', 'user_avatar'
     ];
+
+    public function getUserAvatarAttribute()
+    {
+        if(!$this->profile_photo_path) {
+            return "https://www.kindpng.com/picc/m/421-4212275_transparent-default-avatar-png-avatar-img-png-download.png";
+        }
+
+        if (substr($this->profile_photo_path, 0, 5) == "https") {
+            return $this->profile_photo_path;
+        }
+
+        return asset('storage/' . $this->profile_photo_path);
+    }
 
     public function getNameAttribute()
     {
