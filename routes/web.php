@@ -15,8 +15,9 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('', [PagesController::class, 'index'])->name('home');
-Route::get('/about', [PagesController::class, 'aboutUs'])->name('aboutUs');
+Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/hosts', [PagesController::class, 'hosts'])->name('hosts');
 Route::get('/forum', [PagesController::class, 'forum'])->name('forum');
 

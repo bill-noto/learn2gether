@@ -19,9 +19,14 @@ class PagesController extends Controller
         ]);
     }
 
-    public function aboutUs()
+    public function about()
     {
-        return Inertia::render('AboutUs');
+        return Inertia::render('About');
+    }
+
+    public function contact()
+    {
+        return Inertia::render('Contact');
     }
 
     public function forum()

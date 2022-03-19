@@ -3,52 +3,127 @@
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal">
         <!--    Header    -->
-        <nav class="sticky top-0 z-50 bg-gray-100 relative border-b-2 border-gray-300 text-gray-900">
-            <div class="container mx-auto flex justify-between">
-                <div class="relative block p-2 lg:p-4 text-xl text-blue-600 font-bold content-center">
-                    <Link :href="route('home')">
-                        <img src="../../../public/images/learn2gether-logo.png" alt="Learn2Gether" class="inline w-1/2">
-                    </Link>
-                </div>
-                <ul class="flex items-center">
-                    <li>
-                        <Link :href="route('home')"
-                              class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
-                            Home
+        <header class="sticky top-0 z-50">
+            <nav class="bg-gray-100 relative border-b-2 border-gray-300 text-gray-900">
+                <div class="container mx-auto flex justify-between items-center">
+                    <div class="relative block p-2 lg:p-4 text-xl text-blue-600 font-bold content-center">
+                        <Link :href="route('home')">
+                            <img src="../../../public/images/learn2gether-logo.png" alt="Learn2Gether"
+                                 class="inline w-1/2">
                         </Link>
-                    </li>
-                    <li>
-                        <Link :href="route('aboutUs')"
-                              class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
-                            About Us
-                        </Link>
-                    </li>
-                    <li v-if="canLogin">
-                        <Link v-if="$page.props.user" :href="route('dashboard')"
-                              class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
-                            Dashboard
-                        </Link>
+                    </div>
+                    <ul class="2xl:flex xl:flex lg:flex md:flex hidden">
+                        <li>
+                            <Link :href="route('home')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link :href="route('hosts')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                Hosts
+                            </Link>
+                        </li>
+                        <li>
+                            <Link :href="route('forum')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                Forum
+                            </Link>
+                        </li>
+                        <li>
+                            <Link :href="route('about')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link :href="route('contact')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                Contact Us
+                            </Link>
+                        </li>
+                        <li v-if="canLogin">
+                            <Link v-if="$page.props.user" :href="route('dashboard')"
+                                  class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                Dashboard
+                            </Link>
 
-                        <template v-else>
-                            <ul class="flex">
-                                <li>
-                                    <Link :href="route('login')"
-                                          class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
-                                        Log in
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link v-if="canRegister" :href="route('register')"
-                                          class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
-                                        Register
-                                    </Link>
-                                </li>
-                            </ul>
-                        </template>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                            <template v-else>
+                                <ul class="flex">
+                                    <li>
+                                        <Link :href="route('login')"
+                                              class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                            Log in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link v-if="canRegister" :href="route('register')"
+                                              class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                            Register
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </template>
+                        </li>
+                    </ul>
+                    <img @click="burgerMenu" src="../../../public/images/menu.png"
+                         class="cursor-pointer 2xl:hidden xl:hidden lg:hidden md:hidden inline-block w-5 h-5">
+                </div>
+            </nav>
+
+            <ul ref="bmenu" class="bg-gray-100 text-center h-full w-full hidden border-b-2 border-gray-300 text-gray-900">
+                <li>
+                    <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" :href="route('home')">
+                        Home
+                    </Link>
+                </li>
+                <li>
+                    <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" :href="route('hosts')">
+                        Hosts
+                    </Link>
+                </li>
+                <li>
+                    <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" :href="route('forum')">
+                        Forum
+                    </Link>
+                </li>
+                <li>
+                    <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" :href="route('about')">
+                        About Us
+                    </Link>
+                </li>
+                <li>
+                    <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold"
+                          :href="route('contact')">Contact Us
+                    </Link>
+                </li>
+
+                <li v-if="canLogin">
+                    <Link v-if="$page.props.user" :href="route('dashboard')"
+                          class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                        Dashboard
+                    </Link>
+
+                    <template v-else>
+                        <ul class="bg-gray-100 text-center h-full w-full hidden border-b-2 border-gray-300 text-gray-900">
+                            <li>
+                                <Link :href="route('login')"
+                                      class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                    Log in
+                                </Link>
+                            </li>
+                            <li>
+                                <Link v-if="canRegister" :href="route('register')"
+                                      class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
+                                    Register
+                                </Link>
+                            </li>
+                        </ul>
+                    </template>
+                </li>
+            </ul>
+        </header>
         <!--    End Header    -->
 
         <!--   Hero     -->
@@ -63,7 +138,7 @@
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
                     <div class="flex">
-                        <Link :href="route('aboutUs')">
+                        <Link :href="route('about')">
                             <button
                                 class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
                                 Learn More
@@ -185,7 +260,8 @@
         <!--   End Newsletter     -->
 
         <!--    Footer    -->
-        <footer class="px-4 py-4 h-auto w3-full flex flex-wrap justify-center items-center bg-gray-200 border-gray-300 border-t-2">
+        <footer
+            class="px-4 py-4 h-auto w3-full flex flex-wrap justify-center items-center bg-gray-200 border-gray-300 border-t-2">
             <div class="flex flex-wrap flex-col items-center">
                 <div class="flex flex-wrap">
                     <img class="h-6 w-6 mx-1 rounded-full bg-blue-200"
@@ -228,6 +304,16 @@ export default defineComponent({
             n3: Math.round(Math.random() * (this.users.length - 1)),
         }
     },
+    methods: {
+        burgerMenu() {
+            var content = this.$refs.bmenu;
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+    }
 })
 </script>
 
