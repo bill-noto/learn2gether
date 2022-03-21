@@ -21,7 +21,10 @@ class PagesController extends Controller
 
     public function about()
     {
-        return Inertia::render('About');
+        return Inertia::render('About', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
     }
 
     public function contact()

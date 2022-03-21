@@ -1,7 +1,7 @@
 <template>
     <Head title="Home"/>
 
-    <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal">
+    <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
         <header class="sticky top-0 z-50">
             <nav class="bg-gray-100 relative border-b-2 border-gray-300 text-gray-900">
@@ -68,7 +68,7 @@
                         </li>
                     </ul>
                     <img @click="burgerMenu" src="../../../public/images/menu.png"
-                         class="cursor-pointer 2xl:hidden xl:hidden lg:hidden md:hidden inline-block w-5 h-5">
+                         class="cursor-pointer 2xl:hidden xl:hidden lg:hidden md:hidden inline-block w-5 h-5 mx-3">
                 </div>
             </nav>
 
@@ -106,7 +106,7 @@
                     </Link>
 
                     <template v-else>
-                        <ul class="bg-gray-100 text-center h-full w-full hidden border-b-2 border-gray-300 text-gray-900">
+                        <ul class="bg-gray-100 text-center h-full w-full border-b-2 border-gray-300 text-gray-900">
                             <li>
                                 <Link :href="route('login')"
                                       class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold">
@@ -134,7 +134,7 @@
                 <div class="flex flex-col w-full relative z-10">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-black">
                         Learn While Having Fun</h1>
-                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-500"> Lorem ipsum dolor sit
+                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6"> Lorem ipsum dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
                     <div class="flex">
@@ -195,7 +195,7 @@
             <h1 class="text-2xl sm:text-xl font-bold text-center py-4 mx-auto">Testimonials</h1>
             <div class="flex flex-wrap m-4">
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full"
+                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
                                                                  alt="Testimonial Users Profile Pictures"
                                                                  :src="users[this.n1].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -205,7 +205,7 @@
                     </div>
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full"
+                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
                                                                  alt="Users Profile Pictures"
                                                                  :src="users[this.n2].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -215,7 +215,7 @@
                     </div>
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full"
+                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
                                                                  alt="Users Profile Pictures"
                                                                  :src="users[this.n3].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
@@ -232,13 +232,13 @@
         <div class="w-full p-4 my-4 mx-auto container shadow-md">
             <h1 class="text-2xl sm:text-xl font-bold text-center py-4">Our Newsletter</h1>
             <div class="flex md:p-2 p-0 rounded-xl shadow-md items-center">
-                <div class="lg:w-1/6 md:1/5 mr-2 md:block hidden">
+                <div class="lg:w-1/6 md:w-1/5 mr-2 md:block hidden">
                     <img class="shadow-md h-fit w-auto"
                          alt="Newsletter Man"
                          src="../../../public/images/newsletter.jpg">
                 </div>
                 <div class="lg:w-5/6 md:4/5 w-full md:m-0 m-4">
-                    <h2 class="mb-2 text-lg font-semibold"> Subscribe to our service... </h2>
+                    <h2 class="mb-2 text-lg font-semibold"> Subscribe to our newsletter </h2>
                     <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero
                         possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae
                         libero possimus culpa quod </p>
@@ -268,7 +268,7 @@
                          alt="Facebook Logo" src="../../../public/images/facebook.jpeg">
                     <img
                         class="h-6 w-6 mx-1 rounded-full bg-blue-200" alt="Instagram Logo"
-                        src="../../../public/images/instagram.jpg">
+                        src="../../../public/images/instagram.png">
                     <img class="h-6 w-6 mx-1 rounded-full bg-blue-200"
                          alt="Twitter Logo"
                          src="../../../public/images/twitter.png">
@@ -316,7 +316,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
-
-</style>
