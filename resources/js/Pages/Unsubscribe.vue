@@ -1,5 +1,5 @@
 <template>
-    <Head title="About Us"/>
+    <Head title="Unsubscribe"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -127,62 +127,22 @@
         </header>
         <!--    End Header    -->
 
-        <!--   Hero     -->
-        <section class="relative h-auto shadow-md">
-            <div class="container py-12 md:px-0 px-4 mx-auto flex">
-                <div class="flex flex-col w-full relative">
-                    <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Contact Us</h1>
-                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum dolor sit
-                        amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
-                        sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
+        <!--   Message     -->
+        <div class="flex justify-center items-center h-screen">
+            <div
+                class="w-3/5 h-auto top-1/3 bg-gray-100 p-6 border rounded-2xl mx-auto flex flex-col items-center justify-center">
+                <div>
+                    <h1 class="text-center pb-4">Sorry to see you go. Care to tell us why?</h1>
                 </div>
-            </div>
-        </section>
-        <!--    End Hero    -->
-
-        <!--    Contact    -->
-        <div class="xl:w-4/5 xl:mx-auto">
-            <div class="2xl:flex xl:flex lg:flex md:flex block mx-10 p-4 my-10 shadow-md">
-                <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
-                    <form action="">
-                        <div class="pb-4">
-                            <input class="w-full h-10 p-1" type="text" id="name" placeholder="Your Name">
-                        </div>
-                        <div class="py-4">
-                            <input class="w-full h-10 p-1" type="email" id="email" placeholder="Email">
-                        </div>
-                        <div class="pt-4">
-                    <textarea class="w-full h-32 p-1" type="text" id="comment"
-                              placeholder="Your Question/Comment"></textarea>
-                        </div>
-                        <div>
-                            <button
-                                    class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                                SEND MESSAGE
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="2xl:w-2/6 xl:w-2/6 lg:w-2/6 md:w-2/6 w-1/2 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-0 pt-6 2xl:text-right xl:text-right lg:text-right md:text-right text-left 2xl:text-base xl:text-base lg:text-base text-sm font-semibold">
-                    <p>
-                        Address: <br>
-                        Cika Ljubina 8, <br>
-                        Belgrade, Serbia
-                        <br>
-                        <br>
-                        Tel: <br>
-                        <a class="underline" href="tel:123-456-7890">(123) 456 - 7890</a>
-                        <br>
-                        <br>
-                        Mail: <br>
-                        <a class="underline" href="mailto: contact@learn2gether.com">contact@learn2gether.com</a>
-                    </p>
-                </div>
+                <Link :href="route('contact')">
+                    <button
+                        class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                        Let Us Know
+                    </button>
+                </Link>
             </div>
         </div>
-
-        <!--   End Contact     -->
+        <!--  End Message     -->
 
         <!--    Footer    -->
         <footer
@@ -208,7 +168,7 @@
 
 <script>
 import {defineComponent} from 'vue';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import {Head, Link} from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
     components: {
@@ -221,11 +181,7 @@ export default defineComponent({
     },
     data() {
         var date = new Date();
-        const form = useForm({
-            email: null,
-        });
         return {
-            form,
             year: date.getFullYear(),
         }
     },
@@ -237,12 +193,6 @@ export default defineComponent({
             } else {
                 content.classList.add('hidden');
             }
-        },
-        submit() {
-            this.form.post('/ctc', {
-                preserveScroll: true,
-                onSuccess: () => this.form.reset(),
-            })
         }
     }
 })

@@ -10,14 +10,23 @@ use Inertia\Inertia;
 
 class PagesController extends Controller
 {
-    public function index(User $users)
+
+    /*
+     * Main Index page of application, home page. Bringing login and register props from jetstream, plus all users for testimonials section.
+     */
+
+    public function index()
     {
         return Inertia::render('Home', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'users' => $users->get()
+            'users' => User::where('role', '!=' ,'admin')->get()
         ]);
     }
+
+    /*
+     * About page of application, bringing login and register props from jetstream.
+     */
 
     public function about()
     {
@@ -27,18 +36,39 @@ class PagesController extends Controller
         ]);
     }
 
+    /*
+     * Contact page of application, bringing login and register props from jetstream.
+     */
+
     public function contact()
     {
-        return Inertia::render('Contact');
+        return Inertia::render('Contact', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
     }
+
+    /*
+     * Main Forum page of application, bringing login and register props from jetstream.
+     */
 
     public function forum()
     {
-        return Inertia::render('Forum');
+        return Inertia::render('Forum', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
     }
+
+    /*
+     * Main Host page of application, bringing login and register props from jetstream.
+     */
 
     public function hosts()
     {
-        return Inertia::render('Hosts');
+        return Inertia::render('Hosts', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
     }
 }

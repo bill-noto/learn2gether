@@ -72,7 +72,8 @@
                 </div>
             </nav>
 
-            <ul ref="bmenu" class="bg-gray-100 text-center h-full w-full hidden border-b-2 border-gray-300 text-gray-900">
+            <ul ref="bmenu"
+                class="bg-gray-100 text-center h-full w-full hidden border-b-2 border-gray-300 text-gray-900">
                 <li>
                     <Link class="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold" :href="route('home')">
                         Home
@@ -195,9 +196,10 @@
             <h1 class="text-2xl sm:text-xl font-bold text-center py-4 mx-auto">Testimonials</h1>
             <div class="flex flex-wrap m-4">
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                                                                 alt="Testimonial Users Profile Pictures"
-                                                                 :src="users[this.n1].user_avatar">
+                    <div class="p-8 rounded-xl text-center"><img
+                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                        alt="Testimonial Users Profile Pictures"
+                        :src="users[this.n1].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
                             recusandae
                             libero possimus culpa quod&quot; </p>
@@ -205,9 +207,10 @@
                     </div>
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                                                                 alt="Users Profile Pictures"
-                                                                 :src="users[this.n2].user_avatar">
+                    <div class="p-8 rounded-xl text-center"><img
+                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                        alt="Users Profile Pictures"
+                        :src="users[this.n2].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
                             recusandae
                             libero possimus culpa quod&quot; </p>
@@ -215,9 +218,10 @@
                     </div>
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                                                                 alt="Users Profile Pictures"
-                                                                 :src="users[this.n3].user_avatar">
+                    <div class="p-8 rounded-xl text-center"><img
+                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                        alt="Users Profile Pictures"
+                        :src="users[this.n3].user_avatar">
                         <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
                             recusandae
                             libero possimus culpa quod&quot; </p>
@@ -242,15 +246,16 @@
                     <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero
                         possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae
                         libero possimus culpa quod </p>
-                    <div class="flex items-center py-2">
+                    <form @submit.prevent="submit" class="flex items-center py-2">
                         <input
                             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none"
-                            type="text" placeholder="Insert email" aria-label="Email">
+                            type="email" v-model="this.form.email" placeholder="Insert email" id="email" name="email"
+                            aria-label="Email">
                         <button
                             class="flex-shrink-0 transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-full text-white bg-blue-500 hover:bg-blue-700 px-4 py-2"
-                            type="button"> Subscribe<span class="md:inline-block hidden"> To Newsletter</span>
+                            type="submit"> Subscribe<span class="md:inline-block hidden">To Newsletter</span>
                         </button>
-                    </div>
+                    </form>
                     <div class="mt-2 flex flex-wrap items-center">
                         <p class="text-gray-500 text-xs"> Terms &amp; conditions apply. </p>
                     </div>
@@ -283,7 +288,7 @@
 
 <script>
 import {defineComponent} from 'vue';
-import {Head, Link} from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
     components: {
@@ -297,7 +302,11 @@ export default defineComponent({
     },
     data() {
         var date = new Date();
+        const form = useForm({
+            email: null,
+        });
         return {
+            form,
             year: date.getFullYear(),
             n1: Math.round(Math.random() * (this.users.length - 1)),
             n2: Math.round(Math.random() * (this.users.length - 1)),
@@ -312,6 +321,12 @@ export default defineComponent({
             } else {
                 content.classList.add('hidden');
             }
+        },
+        submit() {
+            this.form.post('/nlt', {
+                preserveScroll: true,
+                onSuccess: () => this.form.reset(),
+            })
         }
     }
 })

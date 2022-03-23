@@ -133,7 +133,8 @@
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
                         A Little About Us</h1>
-                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum dolor sit
+                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
+                        dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
                 </div>
@@ -149,7 +150,12 @@
                         class="mx-auto rounded-full h-44 w-44 transition-all transform hover:scale-110 hover:border-black"
                         src="../../../public/images/mission.jpg" alt="Inclusion">
                     <h1 class="text-center text-lg mt-5 font-bold">Our Mission</h1>
-                    <p class="text-center text-base mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet tellus sed tellus egestas facilisis. Pellentesque eu ante aliquet nulla dapibus finibus. Donec ac velit sed sapien interdum semper vitae quis ligula. Morbi interdum massa sed dui dapibus ultricies. Nulla nisl lacus, posuere eget bibendum vitae, congue vel diam. Proin at velit purus. Sed euismod non arcu efficitur commodo. Proin eu quam vestibulum, pretium tellus vel, venenatis lacus.</p>
+                    <p class="text-center text-base mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus imperdiet tellus sed tellus egestas facilisis. Pellentesque eu ante aliquet nulla
+                        dapibus finibus. Donec ac velit sed sapien interdum semper vitae quis ligula. Morbi interdum
+                        massa sed dui dapibus ultricies. Nulla nisl lacus, posuere eget bibendum vitae, congue vel diam.
+                        Proin at velit purus. Sed euismod non arcu efficitur commodo. Proin eu quam vestibulum, pretium
+                        tellus vel, venenatis lacus.</p>
                 </div>
                 <div class="p-4 m-14 xl:m-0 xl:ml-10 xl:my-14 shadow-md 2xl:w-1/2 xl:w-1/2 lg:w-1/2">
                     <img
@@ -214,15 +220,16 @@
                     <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero
                         possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae
                         libero possimus culpa quod </p>
-                    <div class="flex items-center py-2">
+                    <form @submit.prevent="submit" class="flex items-center py-2">
                         <input
                             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none"
-                            type="text" placeholder="Insert email" aria-label="Email">
+                            type="email" v-model="this.form.email" placeholder="Insert email" id="email" name="email"
+                            aria-label="Email">
                         <button
                             class="flex-shrink-0 transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-full text-white bg-blue-500 hover:bg-blue-700 px-4 py-2"
-                            type="button"> Subscribe<span class="md:inline-block hidden"> To Newsletter</span>
+                            type="submit"> Subscribe<span class="md:inline-block hidden">To Newsletter</span>
                         </button>
-                    </div>
+                    </form>
                     <div class="mt-2 flex flex-wrap items-center">
                         <p class="text-gray-500 text-xs"> Terms &amp; conditions apply. </p>
                     </div>
@@ -255,7 +262,7 @@
 
 <script>
 import {defineComponent} from 'vue';
-import {Head, Link} from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 
 export default defineComponent({
     components: {
@@ -268,7 +275,11 @@ export default defineComponent({
     },
     data() {
         var date = new Date();
+        const form = useForm({
+            email: null,
+        });
         return {
+            form,
             year: date.getFullYear(),
         }
     },
@@ -280,6 +291,12 @@ export default defineComponent({
             } else {
                 content.classList.add('hidden');
             }
+        },
+        submit() {
+            this.form.post('/nlt', {
+                preserveScroll: true,
+                onSuccess: () => this.form.reset(),
+            })
         }
     }
 })
