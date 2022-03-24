@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# Thank you for reaching out {{ $user['name'] }},
 
-The body of your message.
+This is a confirmation email to inform that we received your message. With the message number being: #{{ $number }}.
+<br>
+<br>
+We will do our best to reach back out to you as soon as possible.
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
+Thanks,
+<br>
+The {{ config('app.name') }} Team.
 @endcomponent

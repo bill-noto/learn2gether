@@ -1,5 +1,5 @@
 <template>
-    <Head title="About Us"/>
+    <Head title="Contact Us"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -133,7 +133,8 @@
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
                         Contact Us</h1>
-                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum dolor sit
+                    <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
+                        dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
                 </div>
@@ -145,26 +146,27 @@
         <div class="xl:w-4/5 xl:mx-auto">
             <div class="2xl:flex xl:flex lg:flex md:flex block mx-10 p-4 my-10 shadow-md">
                 <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
-                    <form action="">
+                    <form @submit.prevent="submit">
                         <div class="pb-4">
-                            <input class="w-full h-10 p-1" type="text" id="name" placeholder="Your Name">
+                            <input class="w-full h-10 p-1" type="text" v-model="this.form.name" placeholder="Your Name">
                         </div>
                         <div class="py-4">
-                            <input class="w-full h-10 p-1" type="email" id="email" placeholder="Email">
+                            <input class="w-full h-10 p-1" type="email" v-model="this.form.email" placeholder="Email">
                         </div>
                         <div class="pt-4">
-                    <textarea class="w-full h-32 p-1" type="text" id="comment"
+                    <textarea class="w-full h-32 p-1" type="text" v-model="this.form.comment"
                               placeholder="Your Question/Comment"></textarea>
                         </div>
                         <div>
                             <button
-                                    class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
                                 SEND MESSAGE
                             </button>
                         </div>
                     </form>
                 </div>
-                <div class="2xl:w-2/6 xl:w-2/6 lg:w-2/6 md:w-2/6 w-1/2 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-0 pt-6 2xl:text-right xl:text-right lg:text-right md:text-right text-left 2xl:text-base xl:text-base lg:text-base text-sm font-semibold">
+                <div
+                    class="2xl:w-2/6 xl:w-2/6 lg:w-2/6 md:w-2/6 w-1/2 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-0 pt-6 2xl:text-right xl:text-right lg:text-right md:text-right text-left 2xl:text-base xl:text-base lg:text-base text-sm font-semibold">
                     <p>
                         Address: <br>
                         Cika Ljubina 8, <br>
@@ -222,7 +224,9 @@ export default defineComponent({
     data() {
         var date = new Date();
         const form = useForm({
+            name: null,
             email: null,
+            comment: null
         });
         return {
             form,

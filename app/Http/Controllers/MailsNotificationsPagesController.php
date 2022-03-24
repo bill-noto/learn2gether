@@ -26,12 +26,15 @@ class MailsNotificationsPagesController extends Controller
         return Inertia::render('Unsubscribe');
     }
 
-    public function contacted()
+    public function contacted(Request $request)
     {
-        if (Request::post('email') != '') {
-            $user = Request::post('email');
-            Mail::to($user)
-                ->send(new Contact());
+        $rand = rand(1, 1000);
+
+        if ($request->post() != '') {
+            $recipient = $request->post('email');
+            $user = $request->all();
+            Mail::to($recipient)
+                ->send(new Contact($rand, $user));
         }
         return Redirect::back();
     }

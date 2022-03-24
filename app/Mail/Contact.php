@@ -11,14 +11,18 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $number;
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($rand, $user)
     {
-        //
+        $this->number = $rand;
+        $this->user = $user;
     }
 
     /**

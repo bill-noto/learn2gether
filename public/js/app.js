@@ -22949,7 +22949,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     var date = new Date();
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
-      email: null
+      name: null,
+      email: null,
+      comment: null
     });
     return {
       form: form,
@@ -27417,27 +27419,64 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"relative h-auto shadow-md\"><div class=\"container py-12 md:px-0 px-4 mx-auto flex\"><div class=\"flex flex-col w-full relative\"><h1 class=\"title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center\"> Contact Us</h1><p class=\"text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center\"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p></div></div></section>", 1);
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"xl:w-4/5 xl:mx-auto\"><div class=\"2xl:flex xl:flex lg:flex md:flex block mx-10 p-4 my-10 shadow-md\"><div class=\"2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full\"><form action=\"\"><div class=\"pb-4\"><input class=\"w-full h-10 p-1\" type=\"text\" id=\"name\" placeholder=\"Your Name\"></div><div class=\"py-4\"><input class=\"w-full h-10 p-1\" type=\"email\" id=\"email\" placeholder=\"Email\"></div><div class=\"pt-4\"><textarea class=\"w-full h-32 p-1\" type=\"text\" id=\"comment\" placeholder=\"Your Question/Comment\"></textarea></div><div><button class=\"inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2\"> SEND MESSAGE </button></div></form></div><div class=\"2xl:w-2/6 xl:w-2/6 lg:w-2/6 md:w-2/6 w-1/2 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-0 pt-6 2xl:text-right xl:text-right lg:text-right md:text-right text-left 2xl:text-base xl:text-base lg:text-base text-sm font-semibold\"><p> Address: <br> Cika Ljubina 8, <br> Belgrade, Serbia <br><br> Tel: <br><a class=\"underline\" href=\"tel:123-456-7890\">(123) 456 - 7890</a><br><br> Mail: <br><a class=\"underline\" href=\"mailto: contact@learn2gether.com\">contact@learn2gether.com</a></p></div></div></div>", 1);
-
+var _hoisted_30 = {
+  "class": "xl:w-4/5 xl:mx-auto"
+};
 var _hoisted_31 = {
-  "class": "px-4 py-4 h-auto w3-full flex flex-wrap justify-center items-center bg-gray-200 border-gray-300 border-t-2"
+  "class": "2xl:flex xl:flex lg:flex md:flex block mx-10 p-4 my-10 shadow-md"
 };
 var _hoisted_32 = {
+  "class": "2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full"
+};
+var _hoisted_33 = {
+  "class": "pb-4"
+};
+var _hoisted_34 = {
+  "class": "py-4"
+};
+var _hoisted_35 = {
+  "class": "pt-4"
+};
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2"
+}, " SEND MESSAGE ")], -1
+/* HOISTED */
+);
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "2xl:w-2/6 xl:w-2/6 lg:w-2/6 md:w-2/6 w-1/2 2xl:pt-0 xl:pt-0 lg:pt-0 md:pt-0 pt-6 2xl:text-right xl:text-right lg:text-right md:text-right text-left 2xl:text-base xl:text-base lg:text-base text-sm font-semibold"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Address: "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cika Ljubina 8, "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Belgrade, Serbia "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Tel: "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "underline",
+  href: "tel:123-456-7890"
+}, "(123) 456 - 7890"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Mail: "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "underline",
+  href: "mailto: contact@learn2gether.com"
+}, "contact@learn2gether.com")])], -1
+/* HOISTED */
+);
+
+var _hoisted_38 = {
+  "class": "px-4 py-4 h-auto w3-full flex flex-wrap justify-center items-center bg-gray-200 border-gray-300 border-t-2"
+};
+var _hoisted_39 = {
   "class": "flex flex-wrap flex-col items-center"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-wrap\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Facebook Logo\" src=\"" + _public_images_facebook_jpeg__WEBPACK_IMPORTED_MODULE_3__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Instagram Logo\" src=\"" + _public_images_instagram_png__WEBPACK_IMPORTED_MODULE_4__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Twitter Logo\" src=\"" + _public_images_twitter_png__WEBPACK_IMPORTED_MODULE_5__["default"] + "\"></div><img src=\"" + _public_images_learn2gether_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"Learn2Gether\" class=\"inline w-1/2\">", 2);
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-wrap\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Facebook Logo\" src=\"" + _public_images_facebook_jpeg__WEBPACK_IMPORTED_MODULE_3__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Instagram Logo\" src=\"" + _public_images_instagram_png__WEBPACK_IMPORTED_MODULE_4__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Twitter Logo\" src=\"" + _public_images_twitter_png__WEBPACK_IMPORTED_MODULE_5__["default"] + "\"></div><img src=\"" + _public_images_learn2gether_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"Learn2Gether\" class=\"inline w-1/2\">", 2);
 
-var _hoisted_35 = {
+var _hoisted_42 = {
   "class": "text-xs text-gray-500"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
-    title: "About Us"
+    title: "Contact Us"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Header    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
@@ -27653,7 +27692,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
   /* NEED_PATCH */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Header    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   Hero     "), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Hero    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Contact    "), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Contact     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Footer    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_35, "© " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.year) + ". All rights reserved", 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Header    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   Hero     "), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Hero    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Contact    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return _ctx.submit && _ctx.submit.apply(_ctx, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "w-full h-10 p-1",
+    type: "text",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return _this.form.name = $event;
+    }),
+    placeholder: "Your Name"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, this.form.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "w-full h-10 p-1",
+    type: "email",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return _this.form.email = $event;
+    }),
+    placeholder: "Email"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, this.form.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "class": "w-full h-32 p-1",
+    type: "text",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return _this.form.comment = $event;
+    }),
+    placeholder: "Your Question/Comment"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, this.form.comment]])]), _hoisted_36], 32
+  /* HYDRATE_EVENTS */
+  )]), _hoisted_37])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Contact     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Footer    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_42, "© " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.year) + ". All rights reserved", 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Footer    ")])], 64
   /* STABLE_FRAGMENT */
