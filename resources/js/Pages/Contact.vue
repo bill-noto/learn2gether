@@ -148,14 +148,14 @@
                 <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
                     <form @submit.prevent="submit">
                         <div class="pb-4">
-                            <input class="w-full h-10 p-1" type="text" v-model="this.form.name" placeholder="Your Name">
+                            <input class="w-full h-10 p-1" type="text" v-model="this.form.name" placeholder="Your Name" required>
                         </div>
                         <div class="py-4">
-                            <input class="w-full h-10 p-1" type="email" v-model="this.form.email" placeholder="Email">
+                            <input class="w-full h-10 p-1" type="email" v-model="this.form.email" placeholder="Email" required>
                         </div>
                         <div class="pt-4">
                     <textarea class="w-full h-32 p-1" type="text" v-model="this.form.comment"
-                              placeholder="Your Question/Comment"></textarea>
+                              placeholder="Your Question/Comment" required></textarea>
                         </div>
                         <div>
                             <button

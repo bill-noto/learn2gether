@@ -247,7 +247,7 @@
                         possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae
                         libero possimus culpa quod </p>
                     <form @submit.prevent="submit" class="flex items-center py-2">
-                        <input
+                        <input required
                             class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none"
                             type="email" v-model="this.form.email" placeholder="Insert email" id="email" name="email"
                             aria-label="Email">

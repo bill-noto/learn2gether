@@ -9,15 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "admin/learn2gether": "*",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.5.2",
+        "kabbouchi/nova-impersonate": "^1.13",
         "laravel/framework": "^9.2",
         "laravel/jetstream": "^2.6",
+        "laravel/nova": "*",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
-        "tightenco/ziggy": "^1.0",
-        "laravel/nova": "*",
-        "admin/learn2gether": "*"
+        "tightenco/ziggy": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

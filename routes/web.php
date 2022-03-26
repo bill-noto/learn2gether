@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MailsNotificationsPagesController;
 use App\Http\Controllers\PagesController;
 use App\Mail\Newsletter;
@@ -30,6 +31,15 @@ Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/hosts', [PagesController::class, 'hosts'])->name('hosts');
 Route::get('/forum', [PagesController::class, 'forum'])->name('forum');
+
+
+/*
+ * Routes for the comment resource
+ */
+
+Route::post('cmt', [CommentsController::class, 'store']);
+Route::delete('del/{id}', [CommentsController::class, 'destroy']);
+
 
 /*
  * Routes for newsletter and contact page

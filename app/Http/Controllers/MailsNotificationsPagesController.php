@@ -11,10 +11,10 @@ use Inertia\Inertia;
 
 class MailsNotificationsPagesController extends Controller
 {
-    public function subscribe()
+    public function subscribe(Request $request)
     {
-        if (Request::post('email') != '') {
-            $user = Request::post('email');
+        if ($request->post('email') != '') {
+            $user = $request->post('email');
             Mail::to($user)
                 ->send(new Newsletter());
         }
