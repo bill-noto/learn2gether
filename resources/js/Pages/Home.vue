@@ -173,7 +173,7 @@
             </div>
             <div class="m-4 max-w-md mx-auto overflow-hidden md:max-w-2xl bg-white rounded-xl shadow-md">
                 <div class="md:flex">
-                    <div class="md:w-1/2 w-full"><img class="object-cover h-auto w-full"
+                    <div class="md:w-1/2 w-full"><img class="object-cover h-full w-full"
                                                       alt="Community"
                                                       src="../../../public/images/forum.jpg"></div>
                     <div class="md:w-1/2 w-full p-8">

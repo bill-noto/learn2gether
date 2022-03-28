@@ -14,7 +14,8 @@ class PagesController extends Controller
 {
 
     /*
-     * Main Index page of application, home page. Bringing login and register props from jetstream, plus all users for testimonials section.
+     * Main Index page of application, home page. Bringing login and register props from jetstream, plus all users for testimonials
+     * section.
      */
 
     public function index()
@@ -51,7 +52,8 @@ class PagesController extends Controller
     }
 
     /*
-     * Main Forum page of application, bringing login and register props from jetstream.
+     * Main Forum page of application, bringing login and register props from jetstream. Brings posts, comments and logged in user at
+     * the moment as props for use in the forum section.
      */
 
     public function forum()
@@ -61,6 +63,7 @@ class PagesController extends Controller
             'canRegister' => Route::has('register'),
             'posts' => Post::all(),
             'comments' => Comment::all(),
+            'who' => Auth::user()
         ]);
     }
 
@@ -73,6 +76,7 @@ class PagesController extends Controller
         return Inertia::render('Hosts', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
+            'hosts' => User::where('role', 'host')->get()
         ]);
     }
 }

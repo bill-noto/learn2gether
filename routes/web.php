@@ -3,10 +3,6 @@
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MailsNotificationsPagesController;
 use App\Http\Controllers\PagesController;
-use App\Mail\Newsletter;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -42,7 +38,7 @@ Route::delete('del/{id}', [CommentsController::class, 'destroy']);
 
 
 /*
- * Routes for newsletter and contact page
+ * Routes for newsletter and contact page mail sending resources
  */
 
 Route::post('/nlt', [MailsNotificationsPagesController::class, 'subscribe']);

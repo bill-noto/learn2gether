@@ -155,23 +155,28 @@
                     <div v-for="comment in comments" :key="comment">
                         <div v-if="comment.post_id === post.id" class="my-10 mx-8">
                             <div class="flex justify-start items-center mx-10">
-                                <img :src="comment.user.user_avatar" alt="avatar" class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
+                                <img :src="comment.user.user_avatar" alt="avatar"
+                                     class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
                                 <h1 class="2xl:text-lg xl:text-lg lg:text-lg md:text-lg text-base font-bold">
                                     {{ comment.user.name }} @ {{ this.format(comment.created_at) }}</h1>
-                                <button class="ml-2 text-sm hover:underline" @click="delete_comment(comment.id)">Delete
-                                </button>
+                                <div v-if="who != null">
+                                    <button v-if="comment.user.email === who.email" class="ml-2 text-sm hover:underline"
+                                            @click="delete_comment(comment.id)">
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
-                            <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm">
+                            <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm fl">
                                 {{ comment.comment }}
                             </p>
                         </div>
                     </div>
-                    <form @submit.prevent="submit" class="mx-10">
-                    <textarea v-model="this.form.comment" type="text" name="comment" id="comment"
-                              placeholder="Your comment here"
-                              class="w-full h-12 p-1"></textarea>
+                    <form @submit.prevent="submit(post.id)" class="mx-10 my-10">
+                        <textarea v-model="this.form.comment" type="text" name="comment" id="comment"
+                                  placeholder="Your comment here"
+                                  class="w-full h-12 p-1"></textarea>
                         <button type="submit"
-                            class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
                             Submit
                         </button>
                     </form>
@@ -180,6 +185,29 @@
             <hr class="border border-gray-100">
         </div>
         <!--   End Posts     -->
+
+        <!--   Modal & Overlay     -->
+        <div class="flex items-center justify-center">
+            <div id="modal"
+                 class="fixed w-3/5 h-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm top-1/3 bg-white p-6 border rounded-2xl z-50 hidden flex flex-col items-center">
+                <div>
+                    <h1 class="text-center my-2">Log In/Register to Comment</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic iste praesentium recusandae.
+                        Accusamus
+                        debitis, error eveniet impedit, iste magnam non porro possimus quidem quod rem repellendus
+                        repudiandae soluta tempora vel!</p>
+                </div>
+                <Link :href="route('register')">
+                    <button @click="modalClose" id="modalClose"
+                            class="block mx-auto mt-4 sm:mt-4 md:mt-8 border-black inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                        Login/Register
+                    </button>
+                </Link>
+            </div>
+        </div>
+        <div @click="overlayClose" id="overlay"
+             class="fixed w-full h-full left-0 top-0 z-20 bg-black opacity-70 hidden"></div>
+        <!--   End Modal & Overlay     -->
 
         <!--    Footer    -->
         <footer
@@ -217,11 +245,14 @@ export default defineComponent({
         canLogin: Boolean,
         canRegister: Boolean,
         posts: Array,
-        comments: Array
+        comments: Array,
+        who: Object
     },
     data() {
         var date = new Date();
         const form = useForm({
+            user_id: null,
+            post_id: null,
             comment: null
         });
         return {
@@ -238,6 +269,23 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
+        modal(action) {
+            var modal = document.getElementById('modal').classList;
+            var overlay = document.getElementById('overlay').classList;
+            if (action === 'show') {
+                modal.remove('hidden');
+                overlay.remove('hidden');
+            } else if (action === 'hide') {
+                modal.add('hidden');
+                overlay.add('hidden');
+            }
+        },
+        modalClose() {
+            this.modal('hide')
+        },
+        overlayClose() {
+            this.modal('hide')
+        },
         format(param) {
             return moment(String(param)).format('DD/MM/YYYY hh:mm')
         },
@@ -246,12 +294,30 @@ export default defineComponent({
                 this.$inertia.delete(`/del/${id}`);
             }
         },
-        submit() {
-            this.form.post('/cmt', {
-                preserveScroll: true,
-                onSuccess: () => this.form.reset(),
-            })
+        submit(id) {
+            if (this.who != null) {
+                this.form
+                    .transform((data) => ({
+                        ...data,
+                        user_id: this.who.id,
+                        post_id: id,
+                    }))
+                    .post('/cmt', {
+                        preserveScroll: true,
+                        onSuccess: () => this.form.reset(),
+                    })
+            } else this.modal('show');
         }
     }
 })
 </script>
+
+<style>
+.fl {
+    display: inline-block;
+}
+
+.fl:first-letter {
+    text-transform:uppercase;
+}
+</style>

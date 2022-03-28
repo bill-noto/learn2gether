@@ -39,7 +39,7 @@ class CommentsController extends Controller
             'comment' => 'required'
         ]);
 
-        Comment::create();
+        Comment::create($request->all());
 
         return back();
     }
