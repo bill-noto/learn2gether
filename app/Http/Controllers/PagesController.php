@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Language;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -76,7 +77,8 @@ class PagesController extends Controller
         return Inertia::render('Hosts', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'hosts' => User::where('role', 'host')->get()
+            'hosts' => User::where('role', 'host')->get(),
+            'lang' => Language::all(),
         ]);
     }
 }

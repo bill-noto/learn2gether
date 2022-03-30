@@ -1,5 +1,5 @@
 <img
-    src="{{ asset('storage/learn2gether-logo.png') }}"
+    src="../../images/learn2gether-logo.png"
     alt="LOGO"
     class="fill-current"
     width="{{ $width ?? '126' }}"

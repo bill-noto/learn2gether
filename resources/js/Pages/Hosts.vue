@@ -137,13 +137,45 @@
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
+                    <div class="flex flex-col items-center justify-center">
+                        <label for="sorting">Select a Language:</label>
+                        <select name="sorting" id="sorting" class="w-1/3 bg-gray-100" v-model="this.sorting">
+                            <option value="" selected>-- All --</option>
+                            <option v-for="language in lang" :value="language.id" :key="language">{{ language.language }}</option>
+                        </select>
+                        <p>{{ this.sorting }}</p>
+                    </div>
                 </div>
             </div>
         </section>
         <!--    End Hero    -->
 
         <!--   Hosts     -->
-
+        <div class="container mx-auto flex flex-wrap">
+            <div v-for="host in hosts" :key="host" class="lg:w-1/3 md:w-1/2 w-full p-4">
+                <div class="p-8 rounded-xl shadow">
+                    <img class="mb-4 shadow-md mx-auto h-auto w-full"
+                         alt="Host Profile Picture"
+                         :src="host.user_avatar">
+                    <h4 class="mb-2 text-lg font-semibold text-center"> {{ host.name }} </h4>
+                    <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero
+                        possimus culpa quod </p>
+                    <h4 class="my-2 text-lg font-semibold text-center">Languages:</h4>
+                    <p v-if="host.languages.length === 0" class="text-lg mt-2">Serbian</p>
+                    <div v-for="l in host.languages" :key="l">
+                        <p class="text-lg mt-2">{{ l.language }}</p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <Link :href="route('register')">
+                            <button
+                                class="block mx-auto mt-4 sm:mt-4 md:mt-8 border-black inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                                Request Meeting
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--   End Hosts     -->
 
         <!--    Newsletter    -->
@@ -212,7 +244,8 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        hosts: Array
+        hosts: Array,
+        lang: Array,
     },
     data() {
         var date = new Date();
@@ -220,6 +253,7 @@ export default defineComponent({
             email: null,
         });
         return {
+            sorting: '',
             form,
             year: date.getFullYear(),
         }
@@ -239,6 +273,9 @@ export default defineComponent({
                 onSuccess: () => this.form.reset(),
             })
         }
+    },
+    mounted() {
+        console.log(this.hosts);
     }
 })
 </script>

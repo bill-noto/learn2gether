@@ -197,12 +197,10 @@
                         debitis, error eveniet impedit, iste magnam non porro possimus quidem quod rem repellendus
                         repudiandae soluta tempora vel!</p>
                 </div>
-                <Link :href="route('register')">
-                    <button @click="modalClose" id="modalClose"
-                            class="block mx-auto mt-4 sm:mt-4 md:mt-8 border-black inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                        Login/Register
-                    </button>
-                </Link>
+                <button @click="modalClose" id="modalClose"
+                        class="block mx-auto mt-4 sm:mt-4 md:mt-8 border-black inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                    Login/Register
+                </button>
             </div>
         </div>
         <div @click="overlayClose" id="overlay"
@@ -318,6 +316,6 @@ export default defineComponent({
 }
 
 .fl:first-letter {
-    text-transform:uppercase;
+    text-transform: uppercase;
 }
 </style>

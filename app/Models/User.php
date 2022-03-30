@@ -61,6 +61,8 @@ class User extends Authenticatable
         'name', 'user_avatar'
     ];
 
+    protected $with = ['languages'];
+
     public function getUserAvatarAttribute()
     {
         if(!$this->profile_photo_path) {
