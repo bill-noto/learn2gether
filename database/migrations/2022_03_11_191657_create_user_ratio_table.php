@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_ratio', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->decimal('ratio', 3, 1)->default(0);
+            $table->decimal('ratio', 3, 1)->default(0.0);
         });
     }
 

@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Language;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\UserRatio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,7 @@ class PagesController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'hosts' => User::where('role', 'host')->get(),
+            'rat' => UserRatio::all(),
             'lang' => Language::all(),
         ]);
     }

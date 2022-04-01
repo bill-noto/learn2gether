@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MailsNotificationsPagesController;
+use App\Http\Controllers\MeetingsController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,24 @@ Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/hosts', [PagesController::class, 'hosts'])->name('hosts');
 Route::get('/forum', [PagesController::class, 'forum'])->name('forum');
+
+/*
+ * Routes for meetings resource
+ */
+
+//Route::middleware(['auth:sanctum', 'verified'])->get('/meetings', [MeetingsController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}/create', [MeetingsController::class, 'create']);
+
+
+/*
+    Route::get('/post/{id}', [PostsController::class, 'show']);
+    Route::post('/post', [PostsController::class, 'store']);
+    Route::get('/post/{id}/edit', [PostsController::class, 'edit']);
+    Route::patch('/post/{id}', [PostsController::class, 'update']);
+    Route::delete('/post/{id}', [PostsController::class, 'destroy']);
+ */
+
+//Route::resource('post', PostsController::class);
 
 
 /*

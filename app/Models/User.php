@@ -61,7 +61,7 @@ class User extends Authenticatable
         'name', 'user_avatar'
     ];
 
-    protected $with = ['languages'];
+    protected $with = ['languages', 'ratio'];
 
     public function getUserAvatarAttribute()
     {
