@@ -146,7 +146,6 @@
                                 }}
                             </option>
                         </select>
-                        <p>{{ this.sorting }}</p>
                     </div>
                 </div>
             </div>
@@ -251,9 +250,9 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        hosts: Array,
-        lang: Array,
-        rat: Array
+        hosts: Object,
+        lang: Object,
+        rat: Object
     },
     data() {
         var date = new Date();
@@ -284,9 +283,6 @@ export default defineComponent({
                 onSuccess: () => this.form.reset(),
             })
         }
-    },
-    mounted() {
-        console.log(this.hosts);
     }
 })
 </script>

@@ -242,8 +242,8 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        posts: Array,
-        comments: Array,
+        posts: Object,
+        comments: Object,
         who: Object
     },
     data() {

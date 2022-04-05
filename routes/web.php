@@ -33,21 +33,15 @@ Route::get('/forum', [PagesController::class, 'forum'])->name('forum');
  * Routes for meetings resource
  */
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/meetings', [MeetingsController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/meetings', [MeetingsController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}/create', [MeetingsController::class, 'create']);
+Route::post('/meetings', [MeetingsController::class, 'store']);
+    Route::delete('/meetings/{id}', [MeetingsController::class, 'destroy']);
+    Route::get('/meetings/{id}', [MeetingsController::class, 'show']);
 
 
-/*
-    Route::get('/post/{id}', [PostsController::class, 'show']);
-    Route::post('/post', [PostsController::class, 'store']);
-    Route::get('/post/{id}/edit', [PostsController::class, 'edit']);
-    Route::patch('/post/{id}', [PostsController::class, 'update']);
-    Route::delete('/post/{id}', [PostsController::class, 'destroy']);
- */
-
-//Route::resource('post', PostsController::class);
-
-
+    Route::get('/meetings/{id}/edit', [MeetingsController::class, 'edit']);
+    Route::patch('/meetings/{id}', [MeetingsController::class, 'update']);
 /*
  * Routes for the comment resource
  */

@@ -70,7 +70,8 @@ class PagesController extends Controller
     }
 
     /*
-     * Main Host page of application, bringing login and register props from jetstream.
+     * Main Host page of application, bringing login and register props from jetstream. Bringing hosts from users, rat, from ratio
+     * and lang from language table.
      */
 
     public function hosts()

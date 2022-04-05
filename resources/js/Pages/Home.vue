@@ -298,7 +298,7 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        users: Array
+        users: Object
     },
     data() {
         var date = new Date();

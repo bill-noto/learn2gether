@@ -17,6 +17,8 @@ class Meeting extends Model
         'date_time_of_meeting' => 'date'
     ];
 
+    protected $with = ['host', 'patron'];
+
     public function host()
     {
         return $this->belongsTo(User::class, 'host_id', 'id');
