@@ -65,7 +65,6 @@ class PagesController extends Controller
             'canRegister' => Route::has('register'),
             'posts' => Post::all(),
             'comments' => Comment::all(),
-            'who' => Auth::user()
         ]);
     }
 

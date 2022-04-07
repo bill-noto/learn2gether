@@ -1,5 +1,5 @@
 <template>
-    <Head title="Schedule a Meeting"/>
+    <Head title="Edit Meeting"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -132,7 +132,7 @@
             <div class="container py-12 md:px-0 px-4 mx-auto flex">
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Schedule a Meeting with: {{ host.name }}</h1>
+                        Editing Meeting #: {{ this.meeting.id }}</h1>
                     <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
@@ -146,30 +146,35 @@
         <div class="xl:w-4/5 xl:mx-auto">
             <div class="flex justify-center mx-10 p-4 my-10 shadow-md">
                 <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
-                    <form @submit.prevent="submit">
+                    <form @submit.prevent="submit(this.meeting.id)">
                         <div class="pb-4">
                             <label for="patron">Your Name</label>
                             <select name="patron" id="patron" class="w-full h-10 p-1">
-                                <option :value="who.id" selected>{{ user.name }}</option>
+                                <option :value="this.meeting.patron.id" selected>{{ this.meeting.patron.name }}</option>
                             </select>
                         </div>
                         <div class="py-4">
                             <label for="host">Host Name</label>
                             <select name="host" id="host" class="w-full h-10 p-1">
-                                <option :value="host.id" selected>{{ host.name }}</option>
+                                <option :value="this.meeting.host.id" selected>{{ this.meeting.host.name }}</option>
                             </select>
                         </div>
                         <div class="py-4">
                             <label for="patron">Date</label>
-                            <input v-model="this.form.date_time_of_meeting" type="datetime-local" class="w-full h-10 p-1">
+                            <input v-model="this.form.date_time_of_meeting"
+                                   type="datetime-local" class="w-full h-10 p-1">
                         </div>
                         <div>
                             <button
-                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                                Request Meeting
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 w-1/3">
+                                Confirm Changes
                             </button>
                         </div>
                     </form>
+                    <button @click="expand_meeting(this.meeting.id)"
+                            class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-red-500 hover:bg-red-700 px-4 py-2 my-2 w-1/3">
+                        Cancel Changes
+                    </button>
                 </div>
             </div>
         </div>
@@ -201,6 +206,7 @@
 <script>
 import {defineComponent} from 'vue';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import moment from "moment";
 
 export default defineComponent({
     components: {
@@ -210,15 +216,14 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        host: Object,
-        user: Object
+        meeting: Object,
     },
     data() {
         var date = new Date();
         const form = useForm({
-            host_id: this.host.id,
-            patron_id: this.user.id,
-            date_time_of_meeting: null
+            host_id: this.meeting.host.id,
+            patron_id: this.meeting.patron.id,
+            date_time_of_meeting: this.format(this.meeting.date_time_of_meeting)
         });
         return {
             form,
@@ -234,8 +239,14 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
-        submit() {
-            this.form.post('/meetings')
+        format(param) {
+            return moment(String(param)).format('YYYY-MM-DDTHH:mm');
+        },
+        expand_meeting(id) {
+            this.$inertia.get(`/meetings/${id}`);
+        },
+        submit(id) {
+            this.form.patch(`/meetings/${id}`)
         }
     }
 })

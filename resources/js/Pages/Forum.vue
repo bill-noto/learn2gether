@@ -159,8 +159,8 @@
                                      class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
                                 <h1 class="2xl:text-lg xl:text-lg lg:text-lg md:text-lg text-base font-bold">
                                     {{ comment.user.name }} @ {{ this.format(comment.created_at) }}</h1>
-                                <div v-if="who != null">
-                                    <button v-if="comment.user.email === who.email" class="ml-2 text-sm hover:underline"
+                                <div v-if="user != null">
+                                    <button v-if="comment.user.email === user.email" class="ml-2 text-sm hover:underline"
                                             @click="delete_comment(comment.id)">
                                         Delete
                                     </button>
@@ -244,7 +244,7 @@ export default defineComponent({
         canRegister: Boolean,
         posts: Object,
         comments: Object,
-        who: Object
+        user: Object
     },
     data() {
         var date = new Date();
@@ -285,7 +285,7 @@ export default defineComponent({
             this.modal('hide')
         },
         format(param) {
-            return moment(String(param)).format('DD/MM/YYYY hh:mm')
+            return moment(String(param)).format('DD/MM/YYYY LT')
         },
         delete_comment(id) {
             if (confirm('Are you sure you want to delete this comment?')) {
@@ -293,11 +293,11 @@ export default defineComponent({
             }
         },
         submit(id) {
-            if (this.who != null) {
+            if (this.user != null) {
                 this.form
                     .transform((data) => ({
                         ...data,
-                        user_id: this.who.id,
+                        user_id: this.user.id,
                         post_id: id,
                     }))
                     .post('/cmt', {

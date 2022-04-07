@@ -132,7 +132,7 @@
             <div class="container py-12 md:px-0 px-4 mx-auto flex">
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Your Meetings</h1>
+                        Your Meetings, {{ this.user.name }}</h1>
                     <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
@@ -143,31 +143,71 @@
         <!--    End Hero    -->
 
         <!--    Meetings    -->
-        <table>
+        <div v-if="this.meetings.length === 0" class="mx-auto my-10 text-center font-bold">
+            <h1>We're Sorry, It Seems You Don't Have Any Meetings Scheduled.</h1>
+            <div class="flex flex-col items-center pb-4">
+                <Link :href="route('hosts')">
+                    <button
+                        class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 my-4">
+                        Why Not Make One?
+                    </button>
+                </Link>
+            </div>
+        </div>
+
+
+        <table
+            class="table-fixed mx-auto m-4 border-collapse border border-gray-500 shadow-md w-4/5 text-center 2xl:table xl:table lg:table md:table hidden">
             <thead>
             <tr>
-                <td>Meeting #</td>
-                <td>Host</td>
-                <td>Patron</td>
-                <td>Date & Time</td>
-                <td>Show | Delete</td>
+                <th class="border border-gray-600">Meeting #</th>
+                <th class="border border-gray-600">Host</th>
+                <th class="border border-gray-600">Patron</th>
+                <th class="border border-gray-600">Date & Time</th>
+                <th class="border border-gray-600">Show | Delete</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="meeting in meetings" :key="meeting">
-<!--                v-if="meeting.host.id === this.who.id || meeting.patron.id === this.who.id">-->
-                <td>{{ meeting.id }}</td>
-                <td>{{ meeting.host.name }}</td>
-                <td>{{ meeting.patron.name }}</td>
-                <td>{{ this.format(meeting.date_time_of_meeting) }}</td>
-                <td>
-                    <button @click="expand_meeting(meeting.id)">SHOW</button>
-                    |
-                    <button @click="delete_meeting(meeting.id)">DELETE</button>
+                <td class="border border-gray-700">{{ meeting.id }}</td>
+                <td class="border border-gray-700">{{ meeting.host.name }}</td>
+                <td class="border border-gray-700">{{ meeting.patron.name }}</td>
+                <td class="border border-gray-700">{{ this.format(meeting.date_time_of_meeting) }}</td>
+                <td class="border border-gray-700">
+                    <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline"
+                            @click="expand_meeting(meeting.id)">SHOW
+                    </button>
+                    <button class="bg-red-600 m-1 text-white p-1 rounded-md underline"
+                            @click="delete_meeting(meeting.id)">DELETE
+                    </button>
                 </td>
             </tr>
             </tbody>
         </table>
+
+        <div class="2xl:hidden xl:hidden lg:hidden md:hidden block mx-auto w-4/5">
+            <div v-for="meeting in meetings" :key="meeting">
+                <div class="p-2 m-4 text-center flex flex-col justify-center shadow-md">
+                    <h1 class="my-1 font-bold text-lg">Meeting #:</h1>
+                    <p>{{ meeting.id }}</p>
+                    <h1 class="my-1 font-bold text-lg">Host Name:</h1>
+                    <p>{{ meeting.host.name }}</p>
+                    <h1 class="my-1 font-bold text-lg">Patron Name:</h1>
+                    <p>{{ meeting.patron.name }}</p>
+                    <h1 class="my-1 font-bold text-lg">Date & Time:</h1>
+                    <p>{{ this.format(meeting.date_time_of_meeting) }}</p>
+                    <h1 class="my-1 font-bold text-lg">Actions:</h1>
+                    <div class="flex flex-col items-center justify-center">
+                        <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                                @click="expand_meeting(meeting.id)">SHOW
+                        </button>
+                        <button class="bg-red-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                                @click="delete_meeting(meeting.id)">DELETE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--   End Meetings     -->
 
         <!--    Footer    -->
@@ -205,13 +245,12 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        meetings: Object,
-        who: Object
+        meetings: Array,
+        user: Object
     },
     data() {
         var date = new Date();
         return {
-            meeting: '',
             year: date.getFullYear(),
         }
     },
@@ -225,7 +264,7 @@ export default defineComponent({
             }
         },
         format(param) {
-            return moment(String(param)).format('DD/MM/YYYY hh:mm')
+            return moment(String(param)).format('DD/MM/YYYY LT')
         },
         delete_meeting(id) {
             if (confirm('Are you sure you want to delete this meeting?')) {

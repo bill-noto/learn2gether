@@ -12,17 +12,24 @@ use Inertia\Inertia;
 class MeetingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource, for a host.
      *
      * @return \Inertia\Response
      */
     public function index()
     {
+        $user = User::find(Auth::id());
+        $arr = [];
+        foreach (Meeting::all() as $meeting) {
+            if ($meeting->patron_id == $user->id || $meeting->host_id == $user->id) {
+                $arr[] = $meeting;
+            }
+        }
+
         return Inertia::render('MeetingsIndex', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'meetings' => Meeting::all(),
-            'who' => Auth::user()
+            'meetings' => $arr
         ]);
     }
 
@@ -37,7 +44,6 @@ class MeetingsController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'host' => User::find($id),
-            'who' => Auth::user()
         ]);
     }
 
@@ -77,11 +83,15 @@ class MeetingsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('MeetingEdit', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'meeting' => Meeting::find($id)
+        ]);
     }
 
     /**
@@ -89,23 +99,31 @@ class MeetingsController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'date_time_of_meeting' => 'required'
+        ]);
+
+        $meeting = Meeting::find($id);
+
+        $meeting->update($request->all());
+
+        return $this->index();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Inertia\Response
      */
     public function destroy($id)
     {
         Meeting::destroy($id);
 
-        return back();
+        return $this->index();
     }
 }

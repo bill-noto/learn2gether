@@ -1,5 +1,5 @@
 <template>
-    <Head title="Schedule a Meeting"/>
+    <Head title="Your Meeting"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -132,49 +132,76 @@
             <div class="container py-12 md:px-0 px-4 mx-auto flex">
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Schedule a Meeting with: {{ host.name }}</h1>
+                        Meeting #{{ this.meeting.id }}</h1>
                     <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
                 </div>
             </div>
+            <div class="flex flex-col items-center pb-4">
+                <Link :href="route('meetings')">
+                    <button
+                        class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                        Back to Meetings
+                    </button>
+                </Link>
+            </div>
         </section>
         <!--    End Hero    -->
 
-        <!--    Create Meeting Form    -->
-        <div class="xl:w-4/5 xl:mx-auto">
-            <div class="flex justify-center mx-10 p-4 my-10 shadow-md">
-                <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
-                    <form @submit.prevent="submit">
-                        <div class="pb-4">
-                            <label for="patron">Your Name</label>
-                            <select name="patron" id="patron" class="w-full h-10 p-1">
-                                <option :value="who.id" selected>{{ user.name }}</option>
-                            </select>
-                        </div>
-                        <div class="py-4">
-                            <label for="host">Host Name</label>
-                            <select name="host" id="host" class="w-full h-10 p-1">
-                                <option :value="host.id" selected>{{ host.name }}</option>
-                            </select>
-                        </div>
-                        <div class="py-4">
-                            <label for="patron">Date</label>
-                            <input v-model="this.form.date_time_of_meeting" type="datetime-local" class="w-full h-10 p-1">
-                        </div>
-                        <div>
-                            <button
-                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                                Request Meeting
-                            </button>
-                        </div>
-                    </form>
+        <!--    Meetings    -->
+        <table
+            class="table-fixed mx-auto m-4 border-collapse border border-gray-500 shadow-md w-4/5 text-center 2xl:table xl:table lg:table md:table hidden">
+            <thead>
+            <tr>
+                <th class="border border-gray-600">Meeting #</th>
+                <th class="border border-gray-600">Host</th>
+                <th class="border border-gray-600">Patron</th>
+                <th class="border border-gray-600">Date & Time</th>
+                <th class="border border-gray-600">Edit | Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="border border-gray-700">{{ this.meeting.id }}</td>
+                <td class="border border-gray-700">{{ this.meeting.host.name }}</td>
+                <td class="border border-gray-700">{{ this.meeting.patron.name }}</td>
+                <td class="border border-gray-700">{{ this.format(this.meeting.date_time_of_meeting) }}</td>
+                <td class="border border-gray-700">
+                    <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline"
+                            @click="edit_meeting(this.meeting.id)">EDIT
+                    </button>
+                    <button class="bg-red-600 m-1 text-white p-1 rounded-md underline"
+                            @click="delete_meeting(this.meeting.id)">DELETE
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="2xl:hidden xl:hidden lg:hidden md:hidden block mx-auto w-4/5">
+            <div class="p-2 m-4 text-center flex flex-col justify-center shadow-md">
+                <h1 class="my-1 font-bold text-lg">Meeting #:</h1>
+                <p>{{ this.meeting.id }}</p>
+                <h1 class="my-1 font-bold text-lg">Host Name:</h1>
+                <p>{{ this.meeting.host.name }}</p>
+                <h1 class="my-1 font-bold text-lg">Patron Name:</h1>
+                <p>{{ this.meeting.patron.name }}</p>
+                <h1 class="my-1 font-bold text-lg">Date & Time:</h1>
+                <p>{{ this.format(this.meeting.date_time_of_meeting) }}</p>
+                <h1 class="my-1 font-bold text-lg">Actions:</h1>
+                <div class="flex flex-col items-center justify-center">
+                    <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                            @click="edit_meeting(this.meeting.id)">EDIT
+                    </button>
+                    <button class="bg-red-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                            @click="delete_meeting(this.meeting.id)">DELETE
+                    </button>
                 </div>
             </div>
         </div>
-
-        <!--   End Create Meeting Form     -->
+        <!--   End Meetings     -->
 
         <!--    Footer    -->
         <footer
@@ -200,7 +227,8 @@
 
 <script>
 import {defineComponent} from 'vue';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import {Head, Link} from '@inertiajs/inertia-vue3';
+import moment from 'moment';
 
 export default defineComponent({
     components: {
@@ -210,18 +238,11 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        host: Object,
-        user: Object
+        meeting: Object,
     },
     data() {
         var date = new Date();
-        const form = useForm({
-            host_id: this.host.id,
-            patron_id: this.user.id,
-            date_time_of_meeting: null
-        });
         return {
-            form,
             year: date.getFullYear(),
         }
     },
@@ -234,8 +255,16 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
-        submit() {
-            this.form.post('/meetings')
+        format(param) {
+            return moment(String(param)).format("DD/MM/YYYY LT")
+        },
+        delete_meeting(id) {
+            if (confirm('Are you sure you want to delete this meeting?')) {
+                this.$inertia.delete(`/meetings/${id}`);
+            }
+        },
+        edit_meeting(id) {
+            this.$inertia.get(`/meetings/${id}/edit`);
         }
     }
 })

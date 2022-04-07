@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MailsNotificationsPagesController;
 use App\Http\Controllers\MeetingsController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -33,15 +34,27 @@ Route::get('/forum', [PagesController::class, 'forum'])->name('forum');
  * Routes for meetings resource
  */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/meetings', [MeetingsController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/meetings', [MeetingsController::class, 'index'])->name('meetings');
 Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}/create', [MeetingsController::class, 'create']);
 Route::post('/meetings', [MeetingsController::class, 'store']);
-    Route::delete('/meetings/{id}', [MeetingsController::class, 'destroy']);
-    Route::get('/meetings/{id}', [MeetingsController::class, 'show']);
+Route::delete('/meetings/{id}', [MeetingsController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}', [MeetingsController::class, 'show']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}/edit', [MeetingsController::class, 'edit']);
+Route::patch('/meetings/{id}', [MeetingsController::class, 'update']);
 
 
-    Route::get('/meetings/{id}/edit', [MeetingsController::class, 'edit']);
-    Route::patch('/meetings/{id}', [MeetingsController::class, 'update']);
+/*
+ * Routes for posts resource
+ */
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostsController::class, 'index'])->name('yourPosts');
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts/create', [PostsController::class, 'create'])->name('postsCreate');
+Route::post('/posts', [PostsController::class, 'store']);
+Route::delete('/posts/{id}', [PostsController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{id}', [PostsController::class, 'show']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{id}/edit', [PostsController::class, 'edit']);
+Route::patch('/posts/{id}', [PostsController::class, 'update']);
+
 /*
  * Routes for the comment resource
  */

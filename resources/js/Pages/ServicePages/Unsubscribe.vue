@@ -8,7 +8,7 @@
                 <div class="container mx-auto flex justify-between items-center">
                     <div class="relative block p-2 lg:p-4 text-xl text-blue-600 font-bold content-center">
                         <Link :href="route('home')">
-                            <img src="../../../public/images/learn2gether-logo.png" alt="Learn2Gether"
+                            <img src="../../../../public/images/learn2gether-logo.png" alt="Learn2Gether"
                                  class="inline w-1/2">
                         </Link>
                     </div>
@@ -67,7 +67,7 @@
                             </template>
                         </li>
                     </ul>
-                    <img @click="burgerMenu" src="../../../public/images/menu.png"
+                    <img @click="burgerMenu" src="../../../../public/images/menu.png"
                          class="cursor-pointer 2xl:hidden xl:hidden lg:hidden md:hidden inline-block w-5 h-5 mx-3">
                 </div>
             </nav>
@@ -150,15 +150,15 @@
             <div class="flex flex-wrap flex-col items-center">
                 <div class="flex flex-wrap">
                     <img class="h-6 w-6 mx-1 rounded-full bg-blue-200"
-                         alt="Facebook Logo" src="../../../public/images/facebook.jpeg">
+                         alt="Facebook Logo" src="../../../../public/images/facebook.jpeg">
                     <img
                         class="h-6 w-6 mx-1 rounded-full bg-blue-200" alt="Instagram Logo"
-                        src="../../../public/images/instagram.png">
+                        src="../../../../public/images/instagram.png">
                     <img class="h-6 w-6 mx-1 rounded-full bg-blue-200"
                          alt="Twitter Logo"
-                         src="../../../public/images/twitter.png">
+                         src="../../../../public/images/twitter.png">
                 </div>
-                <img src="../../../public/images/learn2gether-logo.png" alt="Learn2Gether" class="inline w-1/2">
+                <img src="../../../../public/images/learn2gether-logo.png" alt="Learn2Gether" class="inline w-1/2">
                 <span class="text-xs text-gray-500">© {{ this.year }}. All rights reserved</span>
             </div>
         </footer>

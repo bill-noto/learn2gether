@@ -1,5 +1,5 @@
 <template>
-    <Head title="Schedule a Meeting"/>
+    <Head title="Your Posts"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -132,7 +132,7 @@
             <div class="container py-12 md:px-0 px-4 mx-auto flex">
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Schedule a Meeting with: {{ host.name }}</h1>
+                        Your Posts, {{ this.user.name }}</h1>
                     <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
@@ -142,39 +142,72 @@
         </section>
         <!--    End Hero    -->
 
-        <!--    Create Meeting Form    -->
-        <div class="xl:w-4/5 xl:mx-auto">
-            <div class="flex justify-center mx-10 p-4 my-10 shadow-md">
-                <div class="2xl:w-4/6 xl:w-4/6 lg:w-4/6 md:w-4/6 w-full">
-                    <form @submit.prevent="submit">
-                        <div class="pb-4">
-                            <label for="patron">Your Name</label>
-                            <select name="patron" id="patron" class="w-full h-10 p-1">
-                                <option :value="who.id" selected>{{ user.name }}</option>
-                            </select>
-                        </div>
-                        <div class="py-4">
-                            <label for="host">Host Name</label>
-                            <select name="host" id="host" class="w-full h-10 p-1">
-                                <option :value="host.id" selected>{{ host.name }}</option>
-                            </select>
-                        </div>
-                        <div class="py-4">
-                            <label for="patron">Date</label>
-                            <input v-model="this.form.date_time_of_meeting" type="datetime-local" class="w-full h-10 p-1">
-                        </div>
-                        <div>
-                            <button
-                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                                Request Meeting
-                            </button>
-                        </div>
-                    </form>
-                </div>
+        <!--    Meetings    -->
+        <div v-if="this.posts.length === 0" class="mx-auto my-10 text-center font-bold">
+            <h1>We're Sorry, It Seems You Don't Have Any Posts.</h1>
+            <div class="flex flex-col items-center pb-4">
+                <Link :href="route('postsCreate')">
+                    <button
+                        class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 my-4">
+                        Why Not Make One?
+                    </button>
+                </Link>
             </div>
         </div>
 
-        <!--   End Create Meeting Form     -->
+        <div v-for="post in posts" :key="post">
+            <div class="xl:w-4/5 xl:mx-auto">
+                <div class="text-center my-20 mx-8">
+                    <div class="flex justify-center">
+                        <button @click="expand_post(post.id)"
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 mx-4 my-4">
+                            EXPAND
+                        </button>
+                        <button @click="delete_post(post.id)"
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-red-500 hover:bg-red-700 px-4 py-2 mx-4 my-4">
+                            DELETE
+                        </button>
+                    </div>
+                    <h1 class="2xl:text-2xl xl:text-2xl lg:text-2xl md:text-2xl text-xl font-bold">{{ post.title }}</h1>
+                    <h2 class="2xl:text-xl xl:text-xl lg:text-xl md:text-xl text-xl font-bold">{{ post.user.name }},
+                        {{ this.format(post.created_at) }}</h2>
+                    <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm">
+                        {{ post.content }}
+                    </p>
+                    <div v-for="comment in comments" :key="comment">
+                        <div v-if="comment.post_id === post.id" class="my-10 mx-8">
+                            <div class="flex justify-start items-center mx-10">
+                                <img :src="comment.user.user_avatar" alt="avatar"
+                                     class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
+                                <h1 class="2xl:text-lg xl:text-lg lg:text-lg md:text-lg text-base font-bold">
+                                    {{ comment.user.name }} @ {{ this.format(comment.created_at) }}</h1>
+                                <div v-if="user != null">
+                                    <button v-if="comment.user.email === user.email"
+                                            class="ml-2 text-sm hover:underline"
+                                            @click="delete_comment(comment.id)">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm fl">
+                                {{ comment.comment }}
+                            </p>
+                        </div>
+                    </div>
+                    <form @submit.prevent="submit(post.id)" class="mx-10 my-10">
+                        <textarea v-model="this.form.comment" type="text" name="comment" id="comment"
+                                  placeholder="Your comment here"
+                                  class="w-full h-12 p-1"></textarea>
+                        <button type="submit"
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border border-gray-100">
+        </div>
+        <!--   End Meetings     -->
 
         <!--    Footer    -->
         <footer
@@ -201,6 +234,7 @@
 <script>
 import {defineComponent} from 'vue';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import moment from 'moment';
 
 export default defineComponent({
     components: {
@@ -210,15 +244,16 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        host: Object,
+        posts: Object,
+        comments: Array,
         user: Object
     },
     data() {
         var date = new Date();
         const form = useForm({
-            host_id: this.host.id,
-            patron_id: this.user.id,
-            date_time_of_meeting: null
+            user_id: null,
+            post_id: null,
+            comment: null
         });
         return {
             form,
@@ -234,8 +269,35 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
-        submit() {
-            this.form.post('/meetings')
+        format(param) {
+            return moment(String(param)).format('DD/MM/YYYY LT')
+        },
+        delete_comment(id) {
+            if (confirm('Are you sure you want to delete this comment?')) {
+                this.$inertia.delete(`/del/${id}`);
+            }
+        },
+        delete_post(id) {
+            if (confirm('Are you sure you want to delete this meeting?')) {
+                this.$inertia.delete(`/post/${id}`);
+            }
+        },
+        expand_post(id) {
+            this.$inertia.get(`/post/${id}`);
+        },
+        submit(id) {
+            if (this.user != null) {
+                this.form
+                    .transform((data) => ({
+                        ...data,
+                        user_id: this.user.id,
+                        post_id: id,
+                    }))
+                    .post('/cmt', {
+                        preserveScroll: true,
+                        onSuccess: () => this.form.reset(),
+                    })
+            }
         }
     }
 })
