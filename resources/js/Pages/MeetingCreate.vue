@@ -150,7 +150,7 @@
                         <div class="pb-4">
                             <label for="patron">Your Name</label>
                             <select name="patron" id="patron" class="w-full h-10 p-1">
-                                <option :value="who.id" selected>{{ user.name }}</option>
+                                <option :value="user.id" selected>{{ user.name }}</option>
                             </select>
                         </div>
                         <div class="py-4">
@@ -160,16 +160,25 @@
                             </select>
                         </div>
                         <div class="py-4">
-                            <label for="patron">Date</label>
-                            <input v-model="this.form.date_time_of_meeting" type="datetime-local" class="w-full h-10 p-1">
+                            <label for="date">Date</label>
+                            <input v-model="this.form.date_time_of_meeting" type="datetime-local"
+                                   class="w-full h-10 p-1" id="date" name="date">
                         </div>
                         <div>
                             <button
-                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 w-1/3">
                                 Request Meeting
                             </button>
                         </div>
                     </form>
+                    <div>
+                        <Link :href="route('hosts')">
+                            <button
+                                class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-red-500 hover:bg-red-700 px-4 py-2 my-4 w-1/3">
+                                Cancel
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

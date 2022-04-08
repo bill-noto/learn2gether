@@ -160,9 +160,9 @@
                             </select>
                         </div>
                         <div class="py-4">
-                            <label for="patron">Date</label>
+                            <label for="date">Date</label>
                             <input v-model="this.form.date_time_of_meeting"
-                                   type="datetime-local" class="w-full h-10 p-1">
+                                   type="datetime-local" class="w-full h-10 p-1" id="date" name="date">
                         </div>
                         <div>
                             <button

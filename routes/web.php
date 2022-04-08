@@ -47,7 +47,7 @@ Route::patch('/meetings/{id}', [MeetingsController::class, 'update']);
  * Routes for posts resource
  */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostsController::class, 'index'])->name('yourPosts');
+Route::middleware(['auth:sanctum', 'verified'])->get('/posts', [PostsController::class, 'index'])->name('posts');
 Route::middleware(['auth:sanctum', 'verified'])->get('/posts/create', [PostsController::class, 'create'])->name('postsCreate');
 Route::post('/posts', [PostsController::class, 'store']);
 Route::delete('/posts/{id}', [PostsController::class, 'destroy']);

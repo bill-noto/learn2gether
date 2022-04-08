@@ -155,55 +155,56 @@
             </div>
         </div>
 
-
-        <table
-            class="table-fixed mx-auto m-4 border-collapse border border-gray-500 shadow-md w-4/5 text-center 2xl:table xl:table lg:table md:table hidden">
-            <thead>
-            <tr>
-                <th class="border border-gray-600">Meeting #</th>
-                <th class="border border-gray-600">Host</th>
-                <th class="border border-gray-600">Patron</th>
-                <th class="border border-gray-600">Date & Time</th>
-                <th class="border border-gray-600">Show | Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="meeting in meetings" :key="meeting">
-                <td class="border border-gray-700">{{ meeting.id }}</td>
-                <td class="border border-gray-700">{{ meeting.host.name }}</td>
-                <td class="border border-gray-700">{{ meeting.patron.name }}</td>
-                <td class="border border-gray-700">{{ this.format(meeting.date_time_of_meeting) }}</td>
-                <td class="border border-gray-700">
-                    <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline"
-                            @click="expand_meeting(meeting.id)">SHOW
-                    </button>
-                    <button class="bg-red-600 m-1 text-white p-1 rounded-md underline"
-                            @click="delete_meeting(meeting.id)">DELETE
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="2xl:hidden xl:hidden lg:hidden md:hidden block mx-auto w-4/5">
-            <div v-for="meeting in meetings" :key="meeting">
-                <div class="p-2 m-4 text-center flex flex-col justify-center shadow-md">
-                    <h1 class="my-1 font-bold text-lg">Meeting #:</h1>
-                    <p>{{ meeting.id }}</p>
-                    <h1 class="my-1 font-bold text-lg">Host Name:</h1>
-                    <p>{{ meeting.host.name }}</p>
-                    <h1 class="my-1 font-bold text-lg">Patron Name:</h1>
-                    <p>{{ meeting.patron.name }}</p>
-                    <h1 class="my-1 font-bold text-lg">Date & Time:</h1>
-                    <p>{{ this.format(meeting.date_time_of_meeting) }}</p>
-                    <h1 class="my-1 font-bold text-lg">Actions:</h1>
-                    <div class="flex flex-col items-center justify-center">
-                        <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline w-1/3"
+        <div v-if="this.meetings.length !== 0">
+            <table
+                class="table-fixed mx-auto m-4 border-collapse border border-gray-500 shadow-md w-4/5 text-center 2xl:table xl:table lg:table md:table hidden">
+                <thead>
+                <tr>
+                    <th class="border border-gray-600">Meeting #</th>
+                    <th class="border border-gray-600">Host</th>
+                    <th class="border border-gray-600">Patron</th>
+                    <th class="border border-gray-600">Date & Time</th>
+                    <th class="border border-gray-600">Show | Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="meeting in meetings" :key="meeting">
+                    <td class="border border-gray-700">{{ meeting.id }}</td>
+                    <td class="border border-gray-700">{{ meeting.host.name }}</td>
+                    <td class="border border-gray-700">{{ meeting.patron.name }}</td>
+                    <td class="border border-gray-700">{{ this.format(meeting.date_time_of_meeting) }}</td>
+                    <td class="border border-gray-700">
+                        <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline"
                                 @click="expand_meeting(meeting.id)">SHOW
                         </button>
-                        <button class="bg-red-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                        <button class="bg-red-600 m-1 text-white p-1 rounded-md underline"
                                 @click="delete_meeting(meeting.id)">DELETE
                         </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="2xl:hidden xl:hidden lg:hidden md:hidden block mx-auto w-4/5">
+                <div v-for="meeting in meetings" :key="meeting">
+                    <div class="p-2 m-4 text-center flex flex-col justify-center shadow-md">
+                        <h1 class="my-1 font-bold text-lg">Meeting #:</h1>
+                        <p>{{ meeting.id }}</p>
+                        <h1 class="my-1 font-bold text-lg">Host Name:</h1>
+                        <p>{{ meeting.host.name }}</p>
+                        <h1 class="my-1 font-bold text-lg">Patron Name:</h1>
+                        <p>{{ meeting.patron.name }}</p>
+                        <h1 class="my-1 font-bold text-lg">Date & Time:</h1>
+                        <p>{{ this.format(meeting.date_time_of_meeting) }}</p>
+                        <h1 class="my-1 font-bold text-lg">Actions:</h1>
+                        <div class="flex flex-col items-center justify-center">
+                            <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                                    @click="expand_meeting(meeting.id)">SHOW
+                            </button>
+                            <button class="bg-red-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                                    @click="delete_meeting(meeting.id)">DELETE
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

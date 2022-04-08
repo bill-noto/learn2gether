@@ -24,7 +24,7 @@ class PostsController extends Controller
 
         $arr = [];
         foreach ($userPosts as $post) {
-            foreach (Comment::all() as $comment){
+            foreach (Comment::all() as $comment) {
                 if ($comment->post_id == $post->id) {
                     $arr[] = $comment;
                 }
@@ -42,66 +42,103 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function create()
     {
-        //
+        return Inertia::render('PostCreate', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Inertia\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        Post::create($request->all());
+
+        return $this->index();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Inertia\Response
      */
     public function show($id)
     {
-        //
+        $arr = [];
+        foreach (Comment::all() as $comment) {
+            if ($comment->post_id == Post::find($id)->id) {
+                $arr[] = $comment;
+            }
+        }
+
+        return Inertia::render('PostShow', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'post' => Post::find($id),
+            'comments' => $arr
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Inertia\Response
      */
     public function edit($id)
     {
-        //
+        return Inertia::render('PostEdit', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'post' => Post::find($id)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Inertia\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        $post->update($request->all());
+
+        return $this->index();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Inertia\Response
      */
     public function destroy($id)
     {
-        //
+        Post::destroy($id);
+
+        return $this->index();
     }
 }
