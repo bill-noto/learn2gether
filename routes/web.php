@@ -5,6 +5,7 @@ use App\Http\Controllers\MailsNotificationsPagesController;
 use App\Http\Controllers\MeetingsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -78,3 +79,18 @@ Route::post('/ctc', [MailsNotificationsPagesController::class, 'contacted']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+
+
+/*
+ * Routes for Email Verification
+ */
+
+Route::get('/email/verify', function () {
+    return Inertia::render('Auth/VerifyEmail');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/');
+})->middleware(['auth', 'signed'])->name('verification.verify');
