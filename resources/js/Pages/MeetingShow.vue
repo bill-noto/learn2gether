@@ -159,7 +159,7 @@
                 <th class="border border-gray-600">Host</th>
                 <th class="border border-gray-600">Patron</th>
                 <th class="border border-gray-600">Date & Time</th>
-                <th class="border border-gray-600">Edit | Delete</th>
+                <th class="border border-gray-600">Join | Edit | Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -169,6 +169,9 @@
                 <td class="border border-gray-700">{{ this.meeting.patron.name }}</td>
                 <td class="border border-gray-700">{{ this.format(this.meeting.date_time_of_meeting) }}</td>
                 <td class="border border-gray-700">
+                    <button class="bg-green-600 m-1 text-white p-1 rounded-md underline"
+                            @click="join_meeting(this.meeting.id)">JOIN
+                    </button>
                     <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline"
                             @click="edit_meeting(this.meeting.id)">EDIT
                     </button>
@@ -192,6 +195,9 @@
                 <p>{{ this.format(this.meeting.date_time_of_meeting) }}</p>
                 <h1 class="my-1 font-bold text-lg">Actions:</h1>
                 <div class="flex flex-col items-center justify-center">
+                    <button class="bg-green-600 m-1 text-white p-1 rounded-md underline w-1/3"
+                            @click="join_meeting(this.meeting.id)">JOIN
+                    </button>
                     <button class="bg-blue-600 m-1 text-white p-1 rounded-md underline w-1/3"
                             @click="edit_meeting(this.meeting.id)">EDIT
                     </button>
@@ -265,6 +271,9 @@ export default defineComponent({
         },
         edit_meeting(id) {
             this.$inertia.get(`/meetings/${id}/edit`);
+        },
+        join_meeting(id) {
+            this.$inertia.get(`/meeting/${id}`);
         }
     }
 })

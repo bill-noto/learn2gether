@@ -43,7 +43,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}', [Meetings
 Route::middleware(['auth:sanctum', 'verified'])->get('/meetings/{id}/edit', [MeetingsController::class, 'edit']);
 Route::patch('/meetings/{id}', [MeetingsController::class, 'update']);
 
-
 /*
  * Routes for posts resource
  */
@@ -63,7 +62,6 @@ Route::patch('/posts/{id}', [PostsController::class, 'update']);
 Route::post('cmt', [CommentsController::class, 'store']);
 Route::delete('del/{id}', [CommentsController::class, 'destroy']);
 
-
 /*
  * Routes for newsletter and contact page mail sending resources
  */
@@ -71,16 +69,6 @@ Route::delete('del/{id}', [CommentsController::class, 'destroy']);
 Route::post('/nlt', [MailsNotificationsPagesController::class, 'subscribe']);
 Route::get('/usbc', [MailsNotificationsPagesController::class, 'unsubscribe']);
 Route::post('/ctc', [MailsNotificationsPagesController::class, 'contacted']);
-
-/*
- * Routes with need of authorization
-*/
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
-
 
 /*
  * Routes for Email Verification
@@ -94,3 +82,15 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
+
+/*
+ * Routes with need of authorization
+*/
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/meeting/{id}', [PagesController::class, 'meeting'])->name('meeting');
+
+

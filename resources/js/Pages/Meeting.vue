@@ -1,5 +1,5 @@
 <template>
-    <Head title="Our Hosts"/>
+    <Head title="Meeting"/>
 
     <div class="min-h-screen bg-red-100 sm:items-center sm:pt-0 font-sans leading-normal tracking-normal text-gray-900">
         <!--    Header    -->
@@ -132,85 +132,53 @@
             <div class="container py-12 md:px-0 px-4 mx-auto flex">
                 <div class="flex flex-col w-full relative">
                     <h1 class="title-font text-3xl sm:text-5xl lg:text-6xl leading-none tracking-tight mb-8 text-grey-900 text-center">
-                        Our Hosts</h1>
+                        Meeting #{{ this.meeting.id }}</h1>
                     <p class="text-lg sm:text-2xl sm:leading-10 space-y-6 mb-6 text-gray-900 text-center"> Lorem ipsum
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
-                    <div class="flex flex-col items-center justify-center">
-                        <label for="sorting">Select a Language:</label>
-                        <select name="sorting" id="sorting" class="w-1/3 bg-gray-100" v-model="this.sorting">
-                            <option value="" selected>-- All --</option>
-                            <option v-for="language in lang" :value="language.id" :key="language">{{
-                                    language.language
-                                }}
-                            </option>
-                        </select>
-                    </div>
                 </div>
+            </div>
+            <div class="flex flex-col items-center pb-4">
+                <Link :href="route('meetings')">
+                    <button
+                        class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                        Back to Meetings
+                    </button>
+                </Link>
             </div>
         </section>
         <!--    End Hero    -->
 
-        <!--   Hosts     -->
-        <div class="container mx-auto flex flex-wrap">
-            <div v-for="host in hosts" :key="host" class="lg:w-1/3 md:w-1/2 w-full p-4">
-                <div class="p-8 rounded-xl shadow-md">
-                    <img class="mb-4 shadow-md mx-auto h-auto w-full"
-                         alt="Host Profile Picture"
-                         :src="host.user_avatar">
-                    <h4 class="mb-2 text-lg font-semibold text-center"> {{ host.name }} </h4>
-                    <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                        recusandae
-                        libero
-                        possimus culpa quod </p>
-                    <h4 class="my-2 text-lg font-semibold text-center">Languages:</h4>
-                    <p v-if="host.languages.length === 0" class="text-lg mt-2">Serbian</p>
-                    <div v-for="l in host.languages" :key="l">
-                        <p class="text-lg mt-2">{{ l.language }}</p>
-                    </div>
-                    <div class="flex items-center justify-center">
-                        <button @click="goToCreateMeeting(host.id)"
-                                class="block mx-auto mt-4 sm:mt-4 md:mt-8 border-black inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
-                            Request Meeting
-                        </button>
+        <!--    Meeting    -->
+        <div class="xl:w-4/5 xl:mx-auto">
+            <div class="text-center my-20 mx-8">
+                <h1 class="2xl:text-2xl xl:text-2xl lg:text-2xl md:text-2xl text-xl font-bold">Live Chat</h1>
+                <div v-for="message in this.messages" :key="message">
+                    <div class="my-10 mx-8">
+                        <div class="flex justify-start items-center mx-10">
+                            <img :src="user.user_avatar" alt="avatar"
+                                 class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
+                            <h1 class="2xl:text-lg xl:text-lg lg:text-lg md:text-lg text-base font-bold">
+                                {{ user.name }} @ {{ this.timeNow }}</h1>
+                        </div>
+                        <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm fl">
+                            {{ message }}
+                        </p>
                     </div>
                 </div>
+                <form @submit.prevent="submit" class="mx-10 my-10">
+                        <textarea v-model="this.form.message" type="text" name="comment" id="comment"
+                                  placeholder="Your message here"
+                                  class="w-full h-12 p-1"></textarea>
+                    <button type="submit"
+                            class="inline-flex text-md sm:text-xl transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-md text-white bg-blue-500 hover:bg-blue-700 px-4 py-2">
+                        Submit
+                    </button>
+                </form>
             </div>
         </div>
-        <!--   End Hosts     -->
-
-        <!--    Newsletter    -->
-        <div class="w-full p-4 my-4 mx-auto container shadow-md">
-            <h1 class="text-2xl sm:text-xl font-bold text-center py-4">Our Newsletter</h1>
-            <div class="flex md:p-2 p-0 rounded-xl shadow-md items-center">
-                <div class="lg:w-1/6 md:w-1/5 mr-2 md:block hidden">
-                    <img class="shadow-md h-fit w-auto"
-                         alt="Newsletter Man"
-                         src="../../../public/images/newsletter.jpg">
-                </div>
-                <div class="lg:w-5/6 md:4/5 w-full md:m-0 m-4">
-                    <h2 class="mb-2 text-lg font-semibold"> Subscribe to our newsletter </h2>
-                    <p class="text-base"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero
-                        possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae
-                        libero possimus culpa quod </p>
-                    <form @submit.prevent="submit" class="flex items-center py-2">
-                        <input required
-                               class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 leading-tight focus:outline-none"
-                               type="email" v-model="this.form.email" placeholder="Insert email" id="email" name="email"
-                               aria-label="Email">
-                        <button
-                            class="flex-shrink-0 transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-full text-white bg-blue-500 hover:bg-blue-700 px-4 py-2"
-                            type="submit"> Subscribe<span class="md:inline-block hidden">To Newsletter</span>
-                        </button>
-                    </form>
-                    <div class="mt-2 flex flex-wrap items-center">
-                        <p class="text-gray-500 text-xs"> Terms &amp; conditions apply. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--   End Newsletter     -->
+        <!--   End Meeting    -->
 
         <!--    Footer    -->
         <footer
@@ -237,6 +205,7 @@
 <script>
 import {defineComponent} from 'vue';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import moment from 'moment';
 
 export default defineComponent({
     components: {
@@ -246,17 +215,18 @@ export default defineComponent({
     props: {
         canLogin: Boolean,
         canRegister: Boolean,
-        hosts: Object,
-        lang: Object,
+        meeting: Object,
+        user: Object
     },
     data() {
         var date = new Date();
         const form = useForm({
-            email: null,
+            message: null
         });
         return {
-            sorting: '',
             form,
+            messages: [],
+            timeNow: moment(date).format('DD/MM/YYYY LT'),
             year: date.getFullYear(),
         }
     },
@@ -269,15 +239,24 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
-        goToCreateMeeting(id) {
-            this.$inertia.get(`meetings/${id}/create`)
-        },
         submit() {
-            this.form.post('/nlt', {
-                preserveScroll: true,
-                onSuccess: () => this.form.reset(),
-            })
+            let messages = this.messages;
+
+            if (messages !== '') {
+                messages.push(this.form.message);
+                this.form.reset();
+            }
         }
     }
 })
 </script>
+
+<style>
+.fl {
+    display: inline-block;
+}
+
+.fl:first-letter {
+    text-transform: uppercase;
+}
+</style>

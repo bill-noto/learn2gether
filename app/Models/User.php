@@ -62,7 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name', 'user_avatar'
     ];
 
-    protected $with = ['languages', 'ratio'];
+    protected $with = ['languages'];
 
     public function getUserAvatarAttribute()
     {
@@ -95,11 +95,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function languages()
     {
         return $this->belongsToMany(Language::class);
-    }
-
-    public function ratio()
-    {
-        return $this->hasOne(UserRatio::class);
     }
 
     public function host()
