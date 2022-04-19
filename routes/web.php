@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\MailsNotificationsPagesController;
 use App\Http\Controllers\MeetingsController;
@@ -56,11 +57,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/posts/{id}/edit', [PostsC
 Route::patch('/posts/{id}', [PostsController::class, 'update']);
 
 /*
- * Routes for the comment resource
+ * Routes for the comment and meeting chat resource
  */
 
 Route::post('cmt', [CommentsController::class, 'store']);
 Route::delete('del/{id}', [CommentsController::class, 'destroy']);
+
+Route::post('msg', [ChatController::class, 'store']);
 
 /*
  * Routes for newsletter and contact page mail sending resources

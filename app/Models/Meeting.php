@@ -17,7 +17,7 @@ class Meeting extends Model
         'date_time_of_meeting' => 'date'
     ];
 
-    protected $with = ['host', 'patron'];
+    protected $with = ['host', 'patron', 'chats'];
 
     public function host()
     {
@@ -27,5 +27,10 @@ class Meeting extends Model
     public function patron()
     {
         return $this->belongsTo(User::class, 'patron_id', 'id');
+    }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
     }
 }

@@ -23292,12 +23292,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     var date = new Date();
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
+      user_id: this.user.id,
+      meeting_id: this.meeting.id,
       message: null
     });
     return {
       form: form,
-      messages: [],
-      timeNow: moment__WEBPACK_IMPORTED_MODULE_2___default()(date).format('DD/MM/YYYY LT'),
       year: date.getFullYear()
     };
   },
@@ -23311,12 +23311,19 @@ __webpack_require__.r(__webpack_exports__);
         content.classList.add('hidden');
       }
     },
+    format: function format(param) {
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(String(param)).format('DD/MM/YYYY LT');
+    },
     submit: function submit() {
-      var messages = this.messages;
+      var _this = this;
 
-      if (messages !== '') {
-        messages.push(this.form.message);
-        this.form.reset();
+      if (this.form.message !== null) {
+        this.form.post('/msg', {
+          preserveScroll: true,
+          onSuccess: function onSuccess() {
+            return _this.form.reset();
+          }
+        });
       }
     }
   }
@@ -30998,18 +31005,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Hero    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Meeting    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.messages, function (message) {
+  , ["href"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Hero    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Meeting    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [_hoisted_38, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.meeting.chats, function (chat) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-      key: message
+      key: chat
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-      src: _ctx.user.user_avatar,
+      src: chat.user.user_avatar,
       alt: "avatar",
       "class": "h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full"
     }, null, 8
     /* PROPS */
-    , _hoisted_41), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name) + " @ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.timeNow), 1
+    , _hoisted_41), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chat.user.name) + " @ " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.format(chat.created_at)), 1
     /* TEXT */
-    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(message), 1
+    )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(chat.message), 1
     /* TEXT */
     )])]);
   }), 128

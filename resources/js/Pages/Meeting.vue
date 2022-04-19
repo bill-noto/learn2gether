@@ -154,16 +154,16 @@
         <div class="xl:w-4/5 xl:mx-auto">
             <div class="text-center my-20 mx-8">
                 <h1 class="2xl:text-2xl xl:text-2xl lg:text-2xl md:text-2xl text-xl font-bold">Live Chat</h1>
-                <div v-for="message in this.messages" :key="message">
+                <div v-for="chat in this.meeting.chats" :key="chat">
                     <div class="my-10 mx-8">
                         <div class="flex justify-start items-center mx-10">
-                            <img :src="user.user_avatar" alt="avatar"
+                            <img :src="chat.user.user_avatar" alt="avatar"
                                  class="h-10 w-10 2xl:mr-10 xl:mr-10 lg:mr-10 md:mr-10 mr-4 rounded-full">
                             <h1 class="2xl:text-lg xl:text-lg lg:text-lg md:text-lg text-base font-bold">
-                                {{ user.name }} @ {{ this.timeNow }}</h1>
+                                {{ chat.user.name }} @ {{ this.format(chat.created_at) }}</h1>
                         </div>
                         <p class="mt-4 w-4/5 mx-auto 2xl:text-base xl:text-base lg:text-base md:text-base text-sm fl">
-                            {{ message }}
+                            {{ chat.message }}
                         </p>
                     </div>
                 </div>
@@ -221,12 +221,12 @@ export default defineComponent({
     data() {
         var date = new Date();
         const form = useForm({
+            user_id: this.user.id,
+            meeting_id: this.meeting.id,
             message: null
         });
         return {
             form,
-            messages: [],
-            timeNow: moment(date).format('DD/MM/YYYY LT'),
             year: date.getFullYear(),
         }
     },
@@ -239,12 +239,15 @@ export default defineComponent({
                 content.classList.add('hidden');
             }
         },
+        format(param) {
+            return moment(String(param)).format('DD/MM/YYYY LT')
+        },
         submit() {
-            let messages = this.messages;
-
-            if (messages !== '') {
-                messages.push(this.form.message);
-                this.form.reset();
+            if (this.form.message !== null) {
+                this.form.post('/msg', {
+                    preserveScroll: true,
+                    onSuccess: () => this.form.reset(),
+                })
             }
         }
     }
