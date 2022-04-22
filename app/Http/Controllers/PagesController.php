@@ -7,7 +7,7 @@ use App\Models\Language;
 use App\Models\Meeting;
 use App\Models\Post;
 use App\Models\User;
-use App\Models\UserRatio;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -24,7 +24,7 @@ class PagesController extends Controller
         return Inertia::render('Home', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'users' => User::where('role', '!=' ,'admin')->get()
+            'users' => User::where('role', '!=', 'admin')->get()
         ]);
     }
 
@@ -89,10 +89,18 @@ class PagesController extends Controller
 
     public function meeting($id)
     {
-        return Inertia::render('Meeting', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'meeting' => Meeting::find($id)
-        ]);
+        $user = User::find(Auth::id());
+        $meeting = Meeting::find($id);
+
+        if ($meeting->host_id == $user->id || $meeting->patron_id == $user->id) {
+            return Inertia::render('Meeting', [
+                'canLogin' => Route::has('login'),
+                'canRegister' => Route::has('register'),
+                'meeting' => $meeting
+            ]);
+        } else {
+            return abort(404);
+        }
+
     }
 }

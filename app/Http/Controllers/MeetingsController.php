@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chat;
 use App\Models\Meeting;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -122,6 +123,10 @@ class MeetingsController extends Controller
      */
     public function destroy($id)
     {
+        $meeting = Meeting::find($id)->id;
+
+        Chat::destroy(Chat::where('meeting_id', $meeting)->get());
+
         Meeting::destroy($id);
 
         return $this->index();

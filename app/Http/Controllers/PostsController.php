@@ -137,6 +137,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        $post =  Post::find($id)->id;
+
+        Comment::destroy(Comment::where('post_id', $post)->get());
+
         Post::destroy($id);
 
         return $this->index();

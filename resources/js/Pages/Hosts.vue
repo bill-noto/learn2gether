@@ -137,16 +137,6 @@
                         dolor sit
                         amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod. Lorem ipsum dolor
                         sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod </p>
-                    <div class="flex flex-col items-center justify-center">
-                        <label for="sorting">Select a Language:</label>
-                        <select name="sorting" id="sorting" class="w-1/3 bg-gray-100" v-model="this.sorting">
-                            <option value="" selected>-- All --</option>
-                            <option v-for="language in lang" :value="language.id" :key="language">{{
-                                    language.language
-                                }}
-                            </option>
-                        </select>
-                    </div>
                 </div>
             </div>
         </section>
