@@ -154,7 +154,7 @@
         <div class="xl:w-4/5 xl:mx-auto">
             <div class="text-center my-20 mx-8">
                 <h1 class="2xl:text-2xl xl:text-2xl lg:text-2xl md:text-2xl text-xl font-bold">Live Chat</h1>
-                <div v-for="chat in this.meeting.chats" :key="chat">
+                <div v-for="chat in this.chats" :key="chat">
                     <div class="my-10 mx-8">
                         <div class="flex justify-start items-center mx-10">
                             <img :src="chat.user.user_avatar" alt="avatar"
@@ -227,6 +227,7 @@ export default defineComponent({
         });
         return {
             form,
+            chats: [],
             year: date.getFullYear(),
         }
     },
@@ -246,10 +247,24 @@ export default defineComponent({
             if (this.form.message !== null) {
                 this.form.post('/msg', {
                     preserveScroll: true,
-                    onSuccess: () => this.form.reset(),
+                    onSuccess: () => this.form.reset()
                 })
             }
+        },
+    },
+    mounted() {
+
+        let existingChats = this.meeting.chats;
+        if (existingChats != '') {
+            existingChats.forEach((chat) => {
+                this.chats.push(chat);
+            })
         }
+
+        Echo.channel(`meeting`)
+            .listen(".private-chat-event", (e) => {
+                this.chats.push(e.chatRow);
+            });
     }
 })
 </script>

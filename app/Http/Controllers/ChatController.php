@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ButtonPressed;
 use App\Models\Chat;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ChatController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -20,6 +22,8 @@ class ChatController extends Controller
         ]);
 
         Chat::create($request->all());
+
+        ButtonPressed::dispatch(Chat::get()->last());
 
         return back();
     }
