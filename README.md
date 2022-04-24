@@ -42,6 +42,8 @@ On terminal, run:
 
 ```
 $ php artisan migrate --seed
+
+$ php artisan websockets:serve
 ```
 
 ## Acknowledgements
