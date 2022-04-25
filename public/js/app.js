@@ -29607,84 +29607,87 @@ var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_52 = {
+  key: 0
+};
+var _hoisted_53 = {
   "class": "container mx-auto my-4 shadow-md"
 };
 
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-2xl sm:text-xl font-bold text-center py-4 mx-auto"
 }, "Testimonials", -1
 /* HOISTED */
 );
 
-var _hoisted_54 = {
+var _hoisted_55 = {
   "class": "flex flex-wrap m-4"
 };
-var _hoisted_55 = {
+var _hoisted_56 = {
   "class": "lg:w-1/3 md:w-1/2 w-full p-4"
 };
-var _hoisted_56 = {
+var _hoisted_57 = {
   "class": "p-8 rounded-xl text-center"
 };
-var _hoisted_57 = ["src"];
+var _hoisted_58 = ["src"];
 
-var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-base"
 }, " \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod\" ", -1
 /* HOISTED */
 );
 
-var _hoisted_59 = {
-  "class": "mb-2 font-semibold"
-};
 var _hoisted_60 = {
-  "class": "lg:w-1/3 md:w-1/2 w-full p-4"
+  "class": "mb-2 font-semibold"
 };
 var _hoisted_61 = {
-  "class": "p-8 rounded-xl text-center"
-};
-var _hoisted_62 = ["src"];
-
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-base"
-}, " \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod\" ", -1
-/* HOISTED */
-);
-
-var _hoisted_64 = {
-  "class": "mb-2 font-semibold"
-};
-var _hoisted_65 = {
   "class": "lg:w-1/3 md:w-1/2 w-full p-4"
 };
-var _hoisted_66 = {
+var _hoisted_62 = {
   "class": "p-8 rounded-xl text-center"
 };
-var _hoisted_67 = ["src"];
+var _hoisted_63 = ["src"];
 
-var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-base"
 }, " \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod\" ", -1
 /* HOISTED */
 );
 
-var _hoisted_69 = {
+var _hoisted_65 = {
   "class": "mb-2 font-semibold"
 };
+var _hoisted_66 = {
+  "class": "lg:w-1/3 md:w-1/2 w-full p-4"
+};
+var _hoisted_67 = {
+  "class": "p-8 rounded-xl text-center"
+};
+var _hoisted_68 = ["src"];
+
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-base"
+}, " \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod\" ", -1
+/* HOISTED */
+);
+
 var _hoisted_70 = {
+  "class": "mb-2 font-semibold"
+};
+var _hoisted_71 = {
   "class": "w-full p-4 my-4 mx-auto container shadow-md"
 };
 
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-2xl sm:text-xl font-bold text-center py-4"
 }, "Our Newsletter", -1
 /* HOISTED */
 );
 
-var _hoisted_72 = {
+var _hoisted_73 = {
   "class": "flex md:p-2 p-0 rounded-xl shadow-md items-center"
 };
 
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "lg:w-1/6 md:w-1/5 mr-2 md:block hidden"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   "class": "shadow-md h-fit w-auto",
@@ -29694,23 +29697,23 @@ var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_74 = {
+var _hoisted_75 = {
   "class": "lg:w-5/6 md:4/5 w-full md:m-0 m-4"
 };
 
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
   "class": "mb-2 text-lg font-semibold"
 }, " Subscribe to our newsletter ", -1
 /* HOISTED */
 );
 
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-base"
 }, " Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed recusandae libero possimus culpa quod ", -1
 /* HOISTED */
 );
 
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "flex-shrink-0 transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-current focus:outline-none rounded-full text-white bg-blue-500 hover:bg-blue-700 px-4 py-2",
   type: "submit"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Subscribe"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -29719,7 +29722,7 @@ var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "mt-2 flex flex-wrap items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-gray-500 text-xs"
@@ -29727,16 +29730,16 @@ var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_79 = {
+var _hoisted_80 = {
   "class": "px-4 py-4 h-auto w3-full flex flex-wrap justify-center items-center bg-gray-200 border-gray-300 border-t-2"
 };
-var _hoisted_80 = {
+var _hoisted_81 = {
   "class": "flex flex-wrap flex-col items-center"
 };
 
-var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-wrap\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Facebook Logo\" src=\"" + _public_images_facebook_jpeg__WEBPACK_IMPORTED_MODULE_7__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Instagram Logo\" src=\"" + _public_images_instagram_png__WEBPACK_IMPORTED_MODULE_8__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Twitter Logo\" src=\"" + _public_images_twitter_png__WEBPACK_IMPORTED_MODULE_9__["default"] + "\"></div><img src=\"" + _public_images_learn2gether_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"Learn2Gether\" class=\"inline w-1/2\">", 2);
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex flex-wrap\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Facebook Logo\" src=\"" + _public_images_facebook_jpeg__WEBPACK_IMPORTED_MODULE_7__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Instagram Logo\" src=\"" + _public_images_instagram_png__WEBPACK_IMPORTED_MODULE_8__["default"] + "\"><img class=\"h-6 w-6 mx-1 rounded-full bg-blue-200\" alt=\"Twitter Logo\" src=\"" + _public_images_twitter_png__WEBPACK_IMPORTED_MODULE_9__["default"] + "\"></div><img src=\"" + _public_images_learn2gether_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"] + "\" alt=\"Learn2Gether\" class=\"inline w-1/2\">", 2);
 
-var _hoisted_83 = {
+var _hoisted_84 = {
   "class": "text-xs text-gray-500"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -29998,31 +30001,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"]), _hoisted_51])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Services     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Testimonials    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_52, [_hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  , ["href"]), _hoisted_51])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Services     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Testimonials    "), this.users != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [_hoisted_54, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black",
     alt: "Testimonial Users Profile Pictures",
     src: _ctx.users[this.n1].user_avatar
   }, null, 8
   /* PROPS */
-  , _hoisted_57), _hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n1].name), 1
+  , _hoisted_58), _hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n1].name), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black",
     alt: "Users Profile Pictures",
     src: _ctx.users[this.n2].user_avatar
   }, null, 8
   /* PROPS */
-  , _hoisted_62), _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n2].name), 1
+  , _hoisted_63), _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n2].name), 1
   /* TEXT */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black",
     alt: "Users Profile Pictures",
     src: _ctx.users[this.n3].user_avatar
   }, null, 8
   /* PROPS */
-  , _hoisted_67), _hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n3].name), 1
+  , _hoisted_68), _hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", _hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.users[this.n3].name), 1
   /* TEXT */
-  )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Testimonials    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Newsletter    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [_hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [_hoisted_73, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [_hoisted_75, _hoisted_76, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  )])])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Testimonials    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Newsletter    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [_hoisted_72, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [_hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [_hoisted_76, _hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return _ctx.submit && _ctx.submit.apply(_ctx, arguments);
     }, ["prevent"])),
@@ -30040,9 +30043,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "aria-label": "Email"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, this.form.email]]), _hoisted_77], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, this.form.email]]), _hoisted_78], 32
   /* HYDRATE_EVENTS */
-  ), _hoisted_78])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Newsletter     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Footer    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_79, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_83, "© " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.year) + ". All rights reserved", 1
+  ), _hoisted_79])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("   End Newsletter     "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    Footer    "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("footer", _hoisted_80, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_81, [_hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_84, "© " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.year) + ". All rights reserved", 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    End Footer    ")])], 64
   /* STABLE_FRAGMENT */

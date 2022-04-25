@@ -192,40 +192,42 @@
         <!--   End Services     -->
 
         <!--    Testimonials    -->
-        <div class="container mx-auto my-4 shadow-md">
-            <h1 class="text-2xl sm:text-xl font-bold text-center py-4 mx-auto">Testimonials</h1>
-            <div class="flex flex-wrap m-4">
-                <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img
-                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                        alt="Testimonial Users Profile Pictures"
-                        :src="users[this.n1].user_avatar">
-                        <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                            recusandae
-                            libero possimus culpa quod&quot; </p>
-                        <h4 class="mb-2 font-semibold"> {{ users[this.n1].name }} </h4>
+        <div v-if="this.users != ''">
+            <div class="container mx-auto my-4 shadow-md">
+                <h1 class="text-2xl sm:text-xl font-bold text-center py-4 mx-auto">Testimonials</h1>
+                <div class="flex flex-wrap m-4">
+                    <div class="lg:w-1/3 md:w-1/2 w-full p-4">
+                        <div class="p-8 rounded-xl text-center"><img
+                            class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                            alt="Testimonial Users Profile Pictures"
+                            :src="users[this.n1].user_avatar">
+                            <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                                recusandae
+                                libero possimus culpa quod&quot; </p>
+                            <h4 class="mb-2 font-semibold"> {{ users[this.n1].name }} </h4>
+                        </div>
                     </div>
-                </div>
-                <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img
-                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                        alt="Users Profile Pictures"
-                        :src="users[this.n2].user_avatar">
-                        <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                            recusandae
-                            libero possimus culpa quod&quot; </p>
-                        <h4 class="mb-2 font-semibold"> {{ users[this.n2].name }} </h4>
+                    <div class="lg:w-1/3 md:w-1/2 w-full p-4">
+                        <div class="p-8 rounded-xl text-center"><img
+                            class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                            alt="Users Profile Pictures"
+                            :src="users[this.n2].user_avatar">
+                            <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                                recusandae
+                                libero possimus culpa quod&quot; </p>
+                            <h4 class="mb-2 font-semibold"> {{ users[this.n2].name }} </h4>
+                        </div>
                     </div>
-                </div>
-                <div class="lg:w-1/3 md:w-1/2 w-full p-4">
-                    <div class="p-8 rounded-xl text-center"><img
-                        class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
-                        alt="Users Profile Pictures"
-                        :src="users[this.n3].user_avatar">
-                        <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-                            recusandae
-                            libero possimus culpa quod&quot; </p>
-                        <h4 class="mb-2 font-semibold"> {{ users[this.n3].name }} </h4>
+                    <div class="lg:w-1/3 md:w-1/2 w-full p-4">
+                        <div class="p-8 rounded-xl text-center"><img
+                            class="mb-4 shadow-md mx-auto h-40 w-40 rounded-full transition-all transform hover:scale-110 hover:border-black"
+                            alt="Users Profile Pictures"
+                            :src="users[this.n3].user_avatar">
+                            <p class="text-base"> &quot;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                                recusandae
+                                libero possimus culpa quod&quot; </p>
+                            <h4 class="mb-2 font-semibold"> {{ users[this.n3].name }} </h4>
+                        </div>
                     </div>
                 </div>
             </div>
